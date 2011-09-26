@@ -1,0 +1,93 @@
+.clear-fix{
+    clear:both;
+}
+#toolbar {
+    list-style: none outside none;
+    margin: 5px 10px;
+    padding: 0;
+    text-align: left;
+    vertical-align: baseline;
+    font: small "Lucida Grande",Verdana,sans-serif;
+    width: 37px;
+    background: url(/bundles/ikimeapage/images/toolbar_fond.png);
+    position:fixed;
+    left: 2px;
+    border-bottom: 1px solid #000;
+}
+#toolbar .toolbar-header a{
+    background: url(/bundles/ikimeapage/images/toolbar_header.png);
+    height: 12px;
+    display: block;
+    text-decoration: none;
+}
+#toolbar .toolbar-menu{
+    /* overflow: hidden; */
+    height: 300px;
+    line-height: 20px;
+    padding: 5px 20px 5px 1px;
+}
+#toolbar .toolbar-menu ul.parent li{
+    padding: 0 16px 0 10px;
+    position: relative;
+    
+}
+#toolbar .toolbar-menu ul.parent li a{
+    color: #ffffff;
+    font-size: 0.846em;
+    text-decoration: none;
+}
+#toolbar .toolbar-menu .box{
+    border: 1px solid #6c6c6c;
+    width: 150px;
+    background: #ededed;
+    margin-left: 25px;
+    margin-top: -15px;
+    position: absolute;
+    padding: 5px;
+    display: none;
+}
+#toolbar .toolbar-menu .box ul li{
+    float: left;
+}
+#toolbar .toolbar-menu .box ul li a{
+    color: #000;
+}
+.zone{
+    border: 1px dotted #CCC;
+    padding: 10px;
+    margin: 10px 0;
+    position: relative;
+}
+.zone:hover{
+    border: 5px dotted #CCE0F5;
+}
+.zone a.config{
+    background: url(/bundles/ikimeapage/images/gear-select.png) no-repeat;
+    width: 28px;
+    height: 18px;
+    display: block;
+    float: right;
+}
+.zone a.config:hover{
+    background-position: 0 -18px;
+    background-image: url(/bundles/ikimeapage/images/gear-select.png);
+    background-repeat: no-repeat;
+}
+.zone .option{
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 0 4px 4px;
+    display: none;
+    margin: 0;
+    padding: 0.25em 0;
+    right: 0;
+    text-align: left;
+    top: 27px;
+    white-space: nowrap;
+    display: none;
+    position: absolute;
+    width: 100px;
+}
+.zone .option ul li{
+    text-align: center;
+}

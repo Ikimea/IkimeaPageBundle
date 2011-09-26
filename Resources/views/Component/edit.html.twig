@@ -1,0 +1,5 @@
+<form action="{{ path('component_update', { 'id': component.id, 'xhr': '1' }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <span style="color: red;"></span>
+        {{ form_widget(edit_form) }}
+<input type="submit" />
+</form>

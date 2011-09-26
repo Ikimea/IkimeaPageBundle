@@ -1,0 +1,6 @@
+{% for component in components %}
+    {% if component.type  == 'text' %}
+		{% include 'IkimeaPageBundle:Components:text.html.twig' with { 'component': component } %}
+	{% endif %}
+{% endfor %}
+
