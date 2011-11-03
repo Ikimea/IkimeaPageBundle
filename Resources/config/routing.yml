@@ -1,0 +1,20 @@
+zone_get:
+  pattern:  /page/zone/{id}/get
+  defaults: { _controller: IkimeaPageBundle:Zone:get }
+
+component_show:
+  pattern:  /page/component/{id}/show
+  defaults: { _controller: IkimeaPageBundle:Component:show }
+  
+component_new:
+  pattern:  /page/component/{zone}/new
+  defaults: { _controller: IkimeaPageBundle:Component:new }
+  
+component_edit:
+  pattern:  /page/component/{id}/edit
+  defaults: { _controller: IkimeaPageBundle:Component:edit }
+  
+component_update:
+  pattern:  /page/component/{id}/update
+  defaults: { _controller: IkimeaPageBundle:Component:update }
+  requirements: { _method: post }
