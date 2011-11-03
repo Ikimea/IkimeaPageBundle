@@ -52,12 +52,15 @@
 #toolbar .toolbar-menu .box ul li a{
     color: #000;
 }
+<<<<<<< HEAD
 
 #toolbar #toolbar-footer{
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.1, #555555), color-stop(0.1, #555555), color-stop(0.9, #444547), color-stop(1.0, #444547));
     background-color: #555;
     height: 5px;
 }
+=======
+>>>>>>> 7a587f28cc541bd88000a3f6e7bac70a4bcbf5bc
 .zone{
     border: 1px dotted #CCC;
     padding: 10px;
