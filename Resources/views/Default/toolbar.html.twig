@@ -1,6 +1,9 @@
 {% block stylesheets %}
-     <link href="{{ asset('bundles/ikimeapage/css/page.css') }}" type="text/css" rel="stylesheet" />
-{% endblock %}  
+<link href="{{ asset('bundles/ikimeapage/css/page.css') }}" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="{{ asset('/bundles/ikimeapage/js/toolbar.js') }}"></script>
+
+{% endblock %}
+<div id="toolbar">
     <div class="toolbar-header">
         <a href="#"> &nbsp; </a>
     </div>
@@ -12,14 +15,15 @@
                     <ul>
                         <li id="component-text" class="text"><a href="#"><img src="/bundles/ikimeapage/images/components/text/icon.png" alt=" " /> Text</a></li>
                     </ul>
-                        <div class="clear-fix"></div>
+                    <div class="clear-fix"></div>
                 </div>
             </li>
             <li><a href="#"><img src="/bundles/ikimeapage/images/page.png" alt=" " /></a></li>
         </ul>
     </div>    
-        
+
     <div id="toolbar-footer">
-   
+
     </div>
+</div>
 </div>
