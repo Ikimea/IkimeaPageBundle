@@ -1,12 +1,13 @@
 {% macro get(zid) %}
 <section id="zone1" class="zone" rel="{{zid}}">
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="#" class="config"></a>
-    <div class="option">
+    <div class="option clearfix">
         <ul>
             <li><a href="#">Modifier</a></li>
         </ul>
     </div>
-    <div class="content">
+    <div class="content clearfix">
     </div>
     <div class="clearfix"></div>
 </section>

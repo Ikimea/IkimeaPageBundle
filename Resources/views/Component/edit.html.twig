@@ -1,15 +1,5 @@
-<form action="{{ path('component_update', { 'id': component.id, 'xhr': '1' }) }}" method="post" {{ form_enctype(edit_form) }}>
-    <span style="color: red;"></span>
+<form class="ikp-component-form" onSubmit="ikpRemoteSubmit(); return false;" action="{{ path('component_update', { 'id': component.id, 'xhr': '1' }) }}" method="post" {{ form_enctype(edit_form) }}>
     <div class="formtextField">{{ form_widget(edit_form.text) }}</div>
-<input type="submit" />
-</form>
-
-<script type="text/javascript">
-$(document).ready(function(){
-       CKEDITOR.replace( 'component_text' );
-});
-</script>
-
-        {{ form_widget(edit_form) }}
-<input type="submit" />
+            {{ form_rest(edit_form) }}
+    <input class="ikp-btn submit" type="submit" />
 </form>
