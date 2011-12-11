@@ -1,9 +1,11 @@
 <div id="component{{ component.id }}" class="component components-text" rel="{{ component.id }}">
     {% if is_granted('ROLE_ADMIN') %}
     <ul class="ikp-controls clearfix">
-        <li><a href="#" rel="{{ component.id }}" class="ikp-btn edit">Edit</a></li>
-        <li><a class="ikp-btn delete">Delete</a></li>
+        <li><a href="#" class="ikp-btn order icon"><span class="icon"></span></a></li>
+        <li><a href="#" rel="{{ component.id }}" class="ikp-btn edit icon"><span class="icon"></span>Edit</a></li>
+        <li><a class="ikp-btn delete icon"><span class="icon"></span>Delete</a></li>
     </ul>
+     {% endif %}
     <div class="ikp-content clearfix">
         {% autoescape false %}
             {{ component.text }}

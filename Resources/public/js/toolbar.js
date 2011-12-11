@@ -37,45 +37,6 @@ $(document).ready(function(){
          helper: 'clone'
     });
     
-    $(".zone").droppable({
-    	drop: function( event, ui ) {
-
-        composant=  ui.draggable.clone()
-        composant = $(composant);
-        
-        zone = $(this);
-        
-        
-        switch(composant.attr('id')){
-            case 'component-text':                
-                $.post('/page/component/'+ zone.attr('rel') +'/new', function(data) {
-                    zone.append(data);
-                    
-                });
-            break;
-            
-            default:
-                //code to be executed if n is different from case 1 and 2
-       }   
-        
-        
-	//$( this ).addClass( "ui-state-highlight" ).html( "Dropped!" );
-    }});
-    
-    
-    $('.zone a.config').click(function(e){
-        var parent = $(this).parent();
-        var option = parent.find('.option');
-        
-        if(option.is(":hidden")){
-            option.show();
-        }else{
-            option.hide();
-        }
-        
-        
-
-    });
     
 
 });

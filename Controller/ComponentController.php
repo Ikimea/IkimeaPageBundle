@@ -40,6 +40,7 @@ class ComponentController extends Controller {
 
     public function updateAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
+        $sfResponse = new Response();
 
         $entity = $em->getRepository('IkimeaPageBundle:Component')->find($id);
 
@@ -60,10 +61,8 @@ class ComponentController extends Controller {
 
             
             if($request->get('xhr')){
-                return new Response();
-            }else{
-                
-                return $this->redirect($this->generateUrl('component_edit', array('id' => $id)));
+                echo $entity->{'get'.ucfirst($entity->getType())}();
+                return $sfResponse;
             }
         }
 

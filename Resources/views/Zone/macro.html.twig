@@ -1,13 +1,15 @@
 {% macro get(zid) %}
-<section id="zone1" class="zone" rel="{{zid}}">
+<section id="zone{{zid}}" class="{% if is_granted('ROLE_ADMIN') %}get{% endif %} zone clearfix" rel="{{zid}}">
     {% if is_granted('ROLE_ADMIN') %}
-    <a href="#" class="config"></a>
+    <a href="#" class="open-config"></a>
     <div class="option clearfix">
         <ul>
             <li><a href="#">Modifier</a></li>
         </ul>
     </div>
+    {% endif %}
     <div class="content clearfix">
+        {% render "IkimeaPageBundle:Zone:get" with { 'id': zid} %}
     </div>
     <div class="clearfix"></div>
 </section>

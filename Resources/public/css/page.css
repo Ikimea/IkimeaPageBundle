@@ -9,7 +9,9 @@
     background: url(/bundles/ikimeapage/images/toolbar_fond.png);
     position:fixed;
     left: 2px;
+    top: 70px;
     border-bottom: 1px solid #000;
+    z-index: 999;
 }
 #toolbar .toolbar-header a{
     background: url(/bundles/ikimeapage/images/toolbar_header.png);
@@ -48,32 +50,45 @@
 }
 #toolbar .toolbar-menu .box ul li a{
     color: #000;
-}
+}      
 #toolbar #toolbar-footer{
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.1, #555555), color-stop(0.1, #555555), color-stop(0.9, #444547), color-stop(1.0, #444547));
     background-color: #555;
     height: 5px;
 }
+
+/****** ZONE *****/
 .zone{
-    border: 1px dotted #CCC;
     padding: 10px;
     margin: 10px 0;
     position: relative;
 }
-.zone:hover{
-    border: 5px dotted #CCE0F5;
-}
-.zone a.config{
+
+.zone.droppable-hover{ border: 2px dotted #CCE0F5; cursor: move; }
+.zone a.open-config{
     background: url(/bundles/ikimeapage/images/gear-select.png) no-repeat;
     width: 28px;
     height: 18px;
     display: block;
     float: right;
 }
-.zone a.config:hover{
+.zone a.open-config:hover{
     background-position: 0 -18px;
-    background-image: url(/bundles/ikimeapage/images/gear-select.png);
-    background-repeat: no-repeat;
+}
+.zone a.open-config.active{
+    background: url(/bundles/ikimeapage/images/gear-unselect.png) no-repeat;
+}
+.zone a.open-config.active:hover{
+    background-position: 0 -18px;
+}
+.zone a.open-config.active{ 
+    background-color: #FFFFFF;
+    border: 1px solid;
+    border-bottom: none;
+    border-color: #CCCCCC #CCCCCC -moz-use-text-color;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    z-index: 1;
 }
 .zone .option{
     background-color: #FFFFFF;
@@ -84,12 +99,57 @@
     padding: 0.25em 0;
     right: 0;
     text-align: left;
-    top: 27px;
+    top: 28px;
     white-space: nowrap;
     display: none;
     position: absolute;
     width: 100px;
 }
-.zone .option ul li{
-    text-align: center;
+.zone .option ul li{ text-align: center; }
+.zone .option ul li a{ display: block; color: #333333; margin: 0.25em 0; padding: 0.25em 1em 0.25em 0.5em;  text-decoration: none; font-family: "Helvetica Neue",Helvetica, 'HelveticaNeueLTStd77BdCn',Arial,sans-serif; }
+.zone .option ul li a:hover{ background-color: #BFDCEE;  }
+
+.zone .component.components-text{
+    margin-top: 25px;
 }
+.zone .component.components-text .ikp-controls{ margin-bottom: 10px;  }
+.zone .component ul li{ clear: none;  float: left;margin: 0 2px 2px 0; }
+.zone .component ul li a, .zone .component .ikp-btn{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-transition: all 0.218s ease 0s;
+    background-color: #F7F7F7;
+    background-image: -moz-linear-gradient(center bottom , #DDDDDD 0%, #F7F7F7 100%);
+    border-color: #D1D1D1 #C5C5C5 #B8B8B8;
+    border-left: 1px solid #C5C5C5;
+    border-radius: 2px 2px 2px 2px;
+    border-right: 1px solid #C5C5C5;
+    border-style: solid;
+    border-width: 1px;
+    color: #262626;
+    text-decoration: none;
+    text-shadow: 0 1px 1px #FFFFFF;
+}
+.zone .component .ikp-btn.icon{padding: 4px 4px 0 20px;}
+.zone .component ul li a{display: block;}
+.zone .component .ikp-btn{ /*width: 21px; */ height: 15px; position: relative; padding-top: 10px; }
+.zone .component .ikp-btn span.icon{
+    background: url("/bundles/ikimeapage/images/a-icon-sprite.png");
+    background-repeat: no-repeat;
+    display: block;
+    height: 20px;
+    left: 0;
+    margin-top: -10px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: -9999px;
+    top: 50%;
+    width: 20px;
+}
+.zone .component .ikp-btn.order span{ background-position: 0 -20px; }
+.zone .component .ikp-btn.edit span{ background-position: 0 -440px; }
+.zone .component .ikp-btn.delete span{ background-position: -20px -1440px; }
+.zone .component .ikp-btn.submit, .zone .component .ikp-btn.reset { height: 27px; padding-top: 1px; }

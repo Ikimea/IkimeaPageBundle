@@ -1,10 +1,4 @@
 {% for component in components %}
-    {% if component.type  == 'text' %}
-		{% include 'IkimeaPageBundle:Components:text.html.twig' with { 'component': component } %}
-    {% endif %}
-
-    {% if component.type  == 'flase' %}
-		{% include 'IkimeaPageBundle:Components:flash.html.twig' with { 'component': component } %}
-    {% endif %}
+    {% include 'IkimeaPageBundle:Components:' ~ component.type ~ '.html.twig' with { 'component': component } %}
 {% endfor %}
 
