@@ -20,7 +20,7 @@ class Zone {
     private $id;
     
     /**
-     * @ORM\Column(type="string",length="255")
+     * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank()
      * @Assert\MinLength(3)
      */ 
