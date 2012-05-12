@@ -37,6 +37,11 @@ interface PageInterface
     /**
      * @return string
      */
+    public function getTemplate();
+    
+    /**
+     * @return string
+     */
     public function getMetaKeyword();
     
     /**
@@ -63,6 +68,12 @@ interface PageInterface
      * @param string $slug
      */
     public function setSlug($slug);  
+    
+    
+    /**
+     * @param string $template
+     */
+    public function setTemplate($slug);  
     
     
      /**

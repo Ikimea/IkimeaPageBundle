@@ -45,8 +45,14 @@ class PageController extends Controller {
         
         
         $this->addSeoMeta($page);
-
-
+        
+      
+        
+        if(null != $page->getTemplate()){
+           
+            $this->_template = $page->getTemplate();
+        }
+         
         return $this->render($this->_template, $params);
     }
 

@@ -28,8 +28,11 @@ abstract class Page implements PageInterface
     protected $metaDescription;
     protected $created;
     protected $updated;
+    protected $isPublished;
+    protected $template;
 
-    /**
+
+        /**
      * Get id
      *
      * @return integer $id
@@ -78,6 +81,18 @@ abstract class Page implements PageInterface
     {
         return $this->slug;
     }
+    
+    
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+    }
+
+
+    public function getTemplate()
+    {
+        return $this->template;
+    }
 
     /**
      * Get metaDescription
@@ -119,7 +134,29 @@ abstract class Page implements PageInterface
     public function setMetaKeyword($metaKeyword)
     {
         $this->metaKeyword = $metaKeyword;
-    }    
+    }
+    
+     /**
+     * Set is_published
+     *
+     * @param boolean $isPublished
+     */
+    public function setIsPublished($isPublished)
+    {
+        $this->is_published = $isPublished;
+    }
+
+    /**
+     * Get is_published
+     *
+     * @return boolean 
+     */
+    public function getIsPublished()
+    {
+        return $this->is_published;
+    }
+
+    
     
     /**
      * Set created

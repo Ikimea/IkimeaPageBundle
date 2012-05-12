@@ -11,10 +11,13 @@ $(document).ready(function(){
     );
     $('#toolbar .toolbar-header a').click(function(e){
         
-        if($('#toolbar .toolbar-menu').is(":hidden")) {
+        $.cookie('toolbar', 'close');
+        
+        if($('#toolbar .toolbar-menu').is(":hidden") && $.cookie('toolbar')) {
             $("#toolbar .toolbar-menu").slideDown("slow");
         }else{
             $('#toolbar .toolbar-menu').hide('slow');
+            $.cookie('toolbar', 'open');
 
         }
                
