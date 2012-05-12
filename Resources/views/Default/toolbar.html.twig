@@ -1,5 +1,5 @@
 {% block cmstoolbar %}
-{% if is_granted('ROLE_ADMIN') %}
+{#% if is_granted('ROLE_ADMIN') %#}
 <div id="toolbar">
     <div class="toolbar-header">
         <a href="#"> &nbsp; </a>
@@ -15,7 +15,16 @@
                     <div class="clear-fix"></div>
                 </div>
             </li>
-            <li><a href="#"><img src="/bundles/ikimeapage/images/page.png" alt=" " /></a></li>
+            <li>
+                <a href="#"><img src="/bundles/ikimeapage/images/page.png" alt=" " /></a>
+                    <div class="box" class="page">
+                    <ul>
+                        <li id="component-text" class="text"><a href="#"><img src="/bundles/ikimeapage/images/components/text/icon.png" alt=" " /> Ajout</a></li>
+                        <li id="component-text" class="text"><a href="#"><img src="/bundles/ikimeapage/images/components/text/icon.png" alt=" " /> Edit</a></li>
+                    </ul>
+                    <div class="clear-fix"></div>
+                </div>
+            </li>
         </ul>
     </div>    
 
@@ -23,5 +32,5 @@
 
     </div>
 </div>
-{% endif %}
+{#% endif %#}
 {% endblock %}

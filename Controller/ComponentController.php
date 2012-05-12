@@ -1,5 +1,14 @@
 <?php
 
+/*
+* This file is part of the crum-project package.
+*
+* (c) Ikimea Pages <http://www.ikimea.com/>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
+
 namespace Ikimea\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,12 +39,12 @@ class ComponentController extends Controller {
     }
 
     public function showAction($id) {
+        exit;
         $em = $this->getDoctrine()->getEntityManager();
         $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);
 
-
-        return $this->render('IkimeaPageBundle:Components:' . $component->getType() . '.html.twig', array('component' => $component)
-        );
+          echo 'ssq';
+        return $this->render('IkimeaPageBundle:Components:' . $component->getType() . '.html.twig', array('component' => $component));
     }
 
     public function updateAction($id) {
@@ -85,8 +94,8 @@ class ComponentController extends Controller {
         $editForm = $this->createForm(new ComponentType(), $entity);
 
         return $this->render('IkimeaPageBundle:Component:edit.html.twig', array(
-                    'component' => $entity,
-                    'edit_form' => $editForm->createView()
+            'component' => $entity,
+            'edit_form' => $editForm->createView()
         ));
         
     }
