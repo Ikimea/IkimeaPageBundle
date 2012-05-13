@@ -1,5 +1,5 @@
 {% block cmstoolbar %}
-{#% if is_granted('ROLE_ADMIN') %#}
+{% if is_granted('ROLE_ADMIN') %}
 <div id="toolbar">
     <div class="toolbar-header">
         <a href="#"> &nbsp; </a>
@@ -32,5 +32,5 @@
 
     </div>
 </div>
-{#% endif %#}
+{% endif %}
 {% endblock %}
