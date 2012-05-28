@@ -24,8 +24,8 @@ class ComponentController extends Controller {
 
         $entity = new Component();
         $entity->setZone($zone);
-        $entity->setText('Nouveau widget Texte');
-        $entity->setType('text');
+        $entity->setValue('Nouveau widget Texte');
+        $entity->setType('richtext');
 
 
         $em->persist($entity);
@@ -38,7 +38,7 @@ class ComponentController extends Controller {
         return $response;
     }
 
-    public function showAction($id) {
+    public function showAction() {
         exit;
         $em = $this->getDoctrine()->getEntityManager();
         $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);

@@ -12,10 +12,10 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="zone" column="name" type="integer" nullable="false"  />
         <field name="type" type="string" length="156" />
-        <field name="text" type="string"  />
+        <field name="value" type="text"  />
 
+        <many-to-one field="zone" inversed-by="component" target-entity="Zone" />
 
     </entity>
 

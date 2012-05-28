@@ -16,18 +16,15 @@ namespace Ikimea\PageBundle\Model;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-class Component implements ComponentInterface{
+abstract class Component implements ComponentInterface{
 
-    private $id;
+    protected $id;
 
+    protected $zone;
 
-    private $zone;
+    protected $type;
 
-
-    private $type;
-
-
-    private $text;
+    protected $value;
 
     /**
      * Get id
@@ -100,22 +97,22 @@ class Component implements ComponentInterface{
     }
 
     /**
-     * Get text
+     * Get value
      *
-     * @return text
+     * @return value
      */
-    public function getText()
+    public function getValue()
     {
-        return $this->text;
+        return $this->value;
     }
 
     /**
-     * Set text
+     * Set value
      *
-     * @param text $text
+     * @param value $value
      */
-    public function setText($text)
+    public function setValue($value)
     {
-        $this->text = $text;
+        $this->value = $value;
     }
 }

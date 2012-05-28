@@ -56,13 +56,13 @@ interface ComponentInterface
     public function getType();
 
     /**
-     * @return text
+     * @return value
      */
-    public function getText();
+    public function getValue();
 
     /**
-     * @param text $text
+     * @param $value $value
      */
-    public function setText($text);
+    public function setValue($value);
 
 }

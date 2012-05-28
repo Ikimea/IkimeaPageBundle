@@ -13,6 +13,10 @@
         </id>
 
         <field name="name" column="name" type="string" length="255" nullable="false"  />
+        <field name="culture" column="culture" type="string" length="255"  nullable="false"  />
+
+
+        <one-to-many field="components" target-entity="Ikimea\PageBundle\Entity\Component" mapped-by="zone" />
 
     </entity>
 

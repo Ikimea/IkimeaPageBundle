@@ -19,8 +19,9 @@ namespace Ikimea\PageBundle\Model;
 class Zone implements ZoneInterface{
 
     protected $id;
-
+    protected $components;
     protected $name;
+    protected $culture;
 
     /**
      * Get id
@@ -44,4 +45,27 @@ class Zone implements ZoneInterface{
     public function setName($name){
         $this->name = $name;
     }
+
+    /**
+     * @return string $name
+     */
+    public function getCulture(){
+        return $this->culture;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setCulture($culture){
+        $this->culture = $culture;
+    }
+
+    /**
+     *
+     * @return string $name
+     */
+    public function getComponents(){
+        return $this->components;
+    }
+
 }

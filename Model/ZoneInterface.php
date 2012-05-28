@@ -34,4 +34,20 @@ interface ZoneInterface
      */
     public function setName($name);
 
+
+    /**
+     * @return string $name
+     */
+    public function getCulture();
+
+    /**
+     * @param string $culture
+     */
+    public function setCulture($culture);
+
+    /**
+     * @return string $name
+     */
+    public function getComponents();
+
 }

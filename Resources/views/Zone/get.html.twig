@@ -1,4 +1,3 @@
 {% for component in components %}
     {% include 'IkimeaPageBundle:Components:' ~ component.type ~ '.html.twig' with { 'component': component } %}
 {% endfor %}
-

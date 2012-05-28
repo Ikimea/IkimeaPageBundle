@@ -9,7 +9,7 @@ class ComponentType extends AbstractType {
 
     public function buildForm(FormBuilder $builder, array $options) {
         $builder
-                ->add('text', 'ckeditor')
+                ->add('value', 'ckeditor')
         ;
     }
 

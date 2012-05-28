@@ -9,12 +9,10 @@
 * file that was distributed with this source code.
 */
 
-namespace Ikimea\PageBundle\Entity;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Ikimea\PageBundle\Model\Component as BaseComponent;
+namespace Ikimea\PageBundle\Exception;
 
 
+class InternalErrorException extends \RuntimeException
+{
 
-class Component extends BaseComponent {
 }

@@ -1,5 +1,5 @@
 <form class="ikp-component-form" onSubmit="ikpRemoteSubmit(this); return false;" action="{{ path('component_update', { 'id': component.id, 'xhr': '1' }) }}" method="post" {{ form_enctype(edit_form) }}>
-    <div class="formtextField">{{ form_widget(edit_form.text) }}</div>
+    <div class="formtextField">{{ form_widget(edit_form.value) }}</div>
             {{ form_rest(edit_form) }}
     <input class="ikp-btn submit" type="submit" />
     <input class="ikp-btn reset" type="reset" />
