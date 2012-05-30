@@ -22,4 +22,16 @@ class PageRepository extends EntityRepository
         ->getQuery()
         ->getSingleResult();
     }
+
+    public function getArea($slug, $name){
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.zones', 'z')
+            ->leftJoin('z.components', 'c')
+            ->where('p.slug = :slug')
+            ->Andwhere('z.name = :parent')
+            ->setParameter('parent',$name)
+            ->setParameter('slug',$slug)
+            ->getQuery()
+            ->getSingleResult();
+    }
 }

@@ -30,6 +30,8 @@ abstract class Page implements PageInterface
     protected $updated;
     protected $isPublished;
     protected $template;
+    protected $zones;
+
 
 
         /**
@@ -196,6 +198,10 @@ abstract class Page implements PageInterface
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    public function getZones(){
+        return $this->zones;
     }
 
 }

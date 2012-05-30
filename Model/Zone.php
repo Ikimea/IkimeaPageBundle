@@ -19,9 +19,11 @@ namespace Ikimea\PageBundle\Model;
 class Zone implements ZoneInterface{
 
     protected $id;
+    protected $page_id;
     protected $components;
     protected $name;
     protected $culture;
+    protected $page;
 
     /**
      * Get id
@@ -58,6 +60,16 @@ class Zone implements ZoneInterface{
      */
     public function setCulture($culture){
         $this->culture = $culture;
+    }
+
+
+    /**
+     * Set page
+     *
+     * @param \Ikimea\PageBundle\Entity\Page $page
+     */
+    public function setPage($page ){
+        $this->page = $page;
     }
 
     /**

@@ -14,9 +14,15 @@
 
         <field name="name" column="name" type="string" length="255" nullable="false"  />
         <field name="culture" column="culture" type="string" length="255"  nullable="false"  />
+        <field name="page_id" column="page_id" type="integer" nullable="false"  />
 
-
-        <one-to-many field="components" target-entity="Ikimea\PageBundle\Entity\Component" mapped-by="zone" />
+        <many-to-one field="page" inversed-by="page" target-entity="Page" />
+        <one-to-many field="components" target-entity="Ikimea\PageBundle\Entity\Component" mapped-by="zone">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+            <join-column name="page_id" referenced-column-name="id" unique="true" />
+        </one-to-many>
 
     </entity>
 

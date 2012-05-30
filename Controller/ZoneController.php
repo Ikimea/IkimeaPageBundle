@@ -13,23 +13,42 @@
 namespace Ikimea\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Request;
 use Ikimea\PageBundle\Exception\InternalErrorException;
+use Ikimea\PageBundle\Entity\Zone;
 
 
 class ZoneController extends Controller
 {
     
-    public function getAction($name)
+    public function getAction($name )
     {
-        $pos = strpos($name, ' ', 1);
-        if($pos !== false){
+        $em = $this->container->get('doctrine.orm.entity_manager');
+
+        if(strpos($name, ' ', 1) !== false){
             throw new InternalErrorException('The block name must not contain spaces');
         }
 
-        $id = 1;
-        $em = $this->container->get('doctrine.orm.entity_manager');
-        
-        $zone = $em->getRepository('IkimeaPageBundle:Zone')->findOneByName($name);
+        $getPathInfo = str_replace('/', '', $this->get('request')->getPathInfo() );
+        $culture = $this->get('request')->getLocale();
+        $page =  $em->getRepository('IkimeaPageBundle:Page')->findOneBySlug($getPathInfo);
+
+
+        if($em->getRepository('IkimeaPageBundle:Zone')->getArea($name, $culture, $getPathInfo) == false){
+
+           $area =  new Zone();
+           $area->setPage($page);
+           $area->setCulture($culture);
+           $area->setName($name);
+
+
+            $em->persist($area);
+            $em->flush();
+        }
+
+        $zone = $em->getRepository('IkimeaPageBundle:Zone')->getArea($name, $culture, $getPathInfo);
+        $zone = $zone[0];
+
         $components = $zone->getComponents();
 
 
