@@ -14,6 +14,7 @@ namespace Ikimea\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Ikimea\PageBundle\Entity\Component;
 use Ikimea\PageBundle\Form\ComponentType;
 
@@ -24,13 +25,14 @@ class PageController extends Controller {
 
     public function showAction() {
 
-        $pathInfo = $this->get('request')->getPathInfo();
+        $pathInfo = ltrim($this->get('request')->getPathInfo(), '/' );
         $params = array();
 
         $page = $this->getDoctrine()->getRepository('IkimeaPageBundle:Page')->getPageBySlug($pathInfo);
+
         if (!$page) {
 
-            throw new PageNotFoundException('The current url does not exist!');
+            throw new NotFoundHttpException('The current url does not exist!');
         }
 
 
@@ -42,17 +44,17 @@ class PageController extends Controller {
 
         $params['breadcrumb'] = $breadcrumbs;
         $params['page'] = $page;
-        
-        
+
+
         $this->addSeoMeta($page);
-        
-      
-        
+
+
+
         if(null != $page->getTemplate()){
-           
+
             $this->_template = $page->getTemplate();
         }
-         
+
         return $this->render($this->_template, $params);
     }
 

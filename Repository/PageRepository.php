@@ -16,11 +16,8 @@ class PageRepository extends EntityRepository
      *  get page by slug
      */
     public function getPageBySlug($slug){
-        return $this->createQueryBuilder('c')
-        ->where('c.slug = :slug')
-        ->setParameter('slug',$slug)
-        ->getQuery()
-        ->getSingleResult();
+
+       return $this->findOneBy(array('slug' => $slug));
     }
 
     public function getArea($slug, $name){
