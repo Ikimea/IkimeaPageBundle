@@ -1,7 +1,7 @@
 <?php
 
 /*
-* This file is part of the crum-project package.
+* This file is part of the Ikimea Pages package.
 *
 * (c) Ikimea Pages <http://www.ikimea.com/>
 *

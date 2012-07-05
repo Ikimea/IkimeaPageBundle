@@ -1,5 +1,5 @@
 zone_get:
-  pattern:  /page/zone/{id}/get
+  pattern:  /page/zone/{name}/get
   defaults: { _controller: IkimeaPageBundle:Zone:get }
 
 component_show:
