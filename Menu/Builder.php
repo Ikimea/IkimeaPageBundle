@@ -22,7 +22,6 @@ class Builder extends ContainerAware
     public function breadcrumb(Request $request)
     {
         $menu = $this->factory->createItem('root');
-        $menu->setCurrentUri($request->getRequestUri());
         $menu->setChildrenAttribute('id', 'breadcrumb');
         $menu->setChildrenAttribute('class', 'clearfix');
 
