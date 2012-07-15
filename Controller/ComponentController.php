@@ -3,7 +3,7 @@
 /*
 * This file is part of the Ikimea Pages package.
 *
-* (c) Ikimea Pages <http://www.ikimea.com/>
+* (c) Ikimea <http://www.ikimea.com/>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -20,7 +20,7 @@ class ComponentController extends Controller {
 
     public function newAction($zone) {
         
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entity = new Component();
         $entity->setZone($zone);
@@ -39,16 +39,15 @@ class ComponentController extends Controller {
     }
 
     public function showAction() {
-        exit;
-        $em = $this->getDoctrine()->getEntityManager();
+
+        $em = $this->getDoctrine()->getManager();
         $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);
 
-          echo 'ssq';
         return $this->render('IkimeaPageBundle:Components:' . $component->getType() . '.html.twig', array('component' => $component));
     }
 
     public function updateAction($id) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $sfResponse = new Response();
 
         $entity = $em->getRepository('IkimeaPageBundle:Component')->find($id);
@@ -62,7 +61,7 @@ class ComponentController extends Controller {
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
@@ -83,7 +82,7 @@ class ComponentController extends Controller {
     }
 
     public function editAction($id) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('IkimeaPageBundle:Component')->find($id);
 
 

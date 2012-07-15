@@ -3,7 +3,7 @@
 /*
 * This file is part of the Ikimea Pages package.
 *
-* (c) Ikimea Pages <http://www.ikimea.com/>
+* (c) Ikimea <http://www.ikimea.com/>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -21,6 +21,9 @@ use InvalidArgumentException;
 
 abstract class Page implements PageInterface
 {
+    const ROLE_SUPER_ADMIN = 'ROLE_ADMIN';
+
+
     protected $id;
     protected $name;
     protected $slug;
@@ -30,14 +33,11 @@ abstract class Page implements PageInterface
     protected $updated;
     protected $isPublished;
     protected $template;
-    protected $zones;
+    protected $credentials;
+    protected $areas;
 
-
-
-        /**
-     * Get id
-     *
-     * @return integer $id
+    /**
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -45,9 +45,7 @@ abstract class Page implements PageInterface
     }
 
     /**
-     * Get name
-     *
-     * @return string $name
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -55,9 +53,7 @@ abstract class Page implements PageInterface
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
+     * {@inheritdoc}
      */
     public function setName($name)
     {
@@ -65,9 +61,7 @@ abstract class Page implements PageInterface
     }
 
     /**
-     * Set slug
-     *
-     * @param string $slug
+     * {@inheritdoc}
      */
     public function setSlug($slug)
     {
@@ -75,73 +69,81 @@ abstract class Page implements PageInterface
     }
 
     /**
-     * Get slug
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getSlug()
     {
         return $this->slug;
     }
-    
-    
+
+    /**
+     * {@inheritdoc}
+     */
     public function setTemplate($template)
     {
         $this->template = $template;
     }
 
-
+    /**
+     * {@inheritdoc}
+     */
     public function getTemplate()
     {
         return $this->template;
     }
 
     /**
-     * Get metaDescription
-     *
-     * @return string $metaDescription
+     * {@inheritdoc}
+     */
+    public function getCredentials()
+    {
+        return $this->credentials;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCredentials($credentials)
+    {
+        $this->credentials = $credentials;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getMetaDescription()
     {
         return $this->metaDescription;
     }
-    
-    
+
+
     /**
-     * Set metaDescription
-     *
-     * @param string $metaDescription
+     * {@inheritdoc}
      */
     public function setMetaDescription($metaDescription)
     {
         $this->metaDescription = $metaDescription;
     }
 
-    
-     /**
-     * Get metaKeyword
-     *
-     * @return string $metaKeyword
+
+    /**
+     * {@inheritdoc}
      */
     public function getMetaKeyword()
     {
         return $this->metaKeyword;
-    }    
-    
+    }
+
     /**
-     * Set metaKeyword
-     *
-     * @param string $metaKeyword
+     * {@inheritdoc}
      */
     public function setMetaKeyword($metaKeyword)
     {
         $this->metaKeyword = $metaKeyword;
     }
-    
-     /**
-     * Set is_published
-     *
-     * @param boolean $isPublished
+
+    /**
+     * {@inheritdoc}
      */
     public function setIsPublished($isPublished)
     {
@@ -149,21 +151,15 @@ abstract class Page implements PageInterface
     }
 
     /**
-     * Get is_published
-     *
-     * @return boolean 
+     * {@inheritdoc}
      */
     public function getIsPublished()
     {
         return $this->is_published;
     }
 
-    
-    
     /**
-     * Set created
-     *
-     * @param datetime $created
+     * {@inheritdoc}
      */
     public function setCreated(DateTime $created)
     {
@@ -171,9 +167,7 @@ abstract class Page implements PageInterface
     }
 
     /**
-     * Get created
-     *
-     * @return datetime
+     * {@inheritdoc}
      */
     public function getCreated()
     {
@@ -181,9 +175,7 @@ abstract class Page implements PageInterface
     }
 
     /**
-     * Set updated
-     *
-     * @param datetime $updated
+     * {@inheritdoc}
      */
     public function setUpdated(DateTime $updated)
     {
@@ -191,17 +183,27 @@ abstract class Page implements PageInterface
     }
 
     /**
-     * Get updated
-     *
-     * @return datetime
+     * {@inheritdoc}
      */
     public function getUpdated()
     {
         return $this->updated;
     }
 
-    public function getZones(){
-        return $this->zones;
+    /**
+     * {@inheritdoc}
+     */
+    public function setAreas($areas)
+    {
+        $this->areas= $areas;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAreas()
+    {
+        return $this->areas;
     }
 
 }

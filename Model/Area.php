@@ -3,7 +3,7 @@
 /*
 * This file is part of the Ikimea Pages package.
 *
-* (c) Ikimea Pages <http://www.ikimea.com/>
+* (c) Ikimea <http://www.ikimea.com/>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -16,7 +16,7 @@ namespace Ikimea\PageBundle\Model;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-class Zone implements ZoneInterface{
+class Area implements AreaInterface{
 
     protected $id;
     protected $page_id;
@@ -26,55 +26,49 @@ class Zone implements ZoneInterface{
     protected $page;
 
     /**
-     * Get id
-     *
-     * @return integer $id
+     * {@inheritdoc}
      */
     public function getId(){
 
     }
 
     /**
-     * @return string $name
+     * {@inheritdoc}
      */
     public function getName(){
         $this->name;
     }
 
     /**
-     * @param string $name
+     * {@inheritdoc}
      */
     public function setName($name){
         $this->name = $name;
     }
 
     /**
-     * @return string $name
+     * {@inheritdoc}
      */
     public function getCulture(){
         return $this->culture;
     }
 
     /**
-     * @param string $slug
+     * {@inheritdoc}
      */
     public function setCulture($culture){
         $this->culture = $culture;
     }
 
-
     /**
-     * Set page
-     *
-     * @param \Ikimea\PageBundle\Entity\Page $page
+     * {@inheritdoc}
      */
     public function setPage($page ){
         $this->page = $page;
     }
 
     /**
-     *
-     * @return string $name
+     * {@inheritdoc}
      */
     public function getComponents(){
         return $this->components;

@@ -15,7 +15,7 @@
         <field name="type" type="string" length="156" />
         <field name="value" type="text"  />
 
-        <many-to-one field="zone" inversed-by="component" target-entity="Zone" />
+        <many-to-one field="area" inversed-by="component" target-entity="Area" />
 
     </entity>
 

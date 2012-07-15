@@ -3,7 +3,7 @@
 /*
 * This file is part of the Ikimea Pages package.
 *
-* (c) Ikimea Pages <http://www.ikimea.com/>
+* (c) Ikimea <http://www.ikimea.com/>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -60,6 +60,11 @@ interface PageInterface
     public function getUpdated();
 
     /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAreas();
+
+    /**
      * @param string $name
      */
     public function setName($name);
@@ -67,14 +72,12 @@ interface PageInterface
     /**
      * @param string $slug
      */
-    public function setSlug($slug);  
-    
+    public function setSlug($slug);
     
     /**
      * @param string $template
      */
-    public function setTemplate($slug);  
-    
+    public function setTemplate($slug);
     
      /**
      * @param string $metaKeyword
@@ -95,5 +98,11 @@ interface PageInterface
      * @param datetime $updated
      */
     public function setUpdated(\DateTime $updated);
+
+    /**
+     * set areas
+    */
+
+    public function setAreas($areas);
 
 }

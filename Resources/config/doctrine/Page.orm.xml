@@ -25,7 +25,7 @@
             <gedmo:timestampable on="update"/>
         </field>
 
-        <one-to-many field="zones" target-entity="Zone" mapped-by="page" />
+        <one-to-many field="areas" target-entity="Area" mapped-by="page" />
 
     </entity>
 

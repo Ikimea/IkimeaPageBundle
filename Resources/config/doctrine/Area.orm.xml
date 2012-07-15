@@ -6,7 +6,7 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <entity name="Ikimea\PageBundle\Entity\Zone" repository-class="Ikimea\PageBundle\Repository\ZoneRepository" table="zone">
+    <entity name="Ikimea\PageBundle\Entity\Area" repository-class="Ikimea\PageBundle\Repository\AreaRepository" table="area">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
@@ -17,7 +17,7 @@
         <field name="page_id" column="page_id" type="integer" nullable="false"  />
 
         <many-to-one field="page" inversed-by="page" target-entity="Page" />
-        <one-to-many field="components" target-entity="Ikimea\PageBundle\Entity\Component" mapped-by="zone">
+        <one-to-many field="components" target-entity="Ikimea\PageBundle\Entity\Component" mapped-by="area">
             <cascade>
                 <cascade-persist/>
             </cascade>

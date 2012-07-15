@@ -3,7 +3,7 @@
 /*
 * This file is part of the Ikimea Pages package.
 *
-* (c) Ikimea Pages <http://www.ikimea.com/>
+* (c) Ikimea <http://www.ikimea.com/>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -18,7 +18,6 @@ namespace Ikimea\PageBundle\Model;
 interface ComponentInterface
 {
 
-
     /**
      * @return integer
      */
@@ -27,12 +26,12 @@ interface ComponentInterface
     /**
      * @param string $zone
      */
-    public function setZone($zone);
+    public function setArea($zone);
 
     /**
      * @return string
      */
-    public function getZone();
+    public function getArea();
 
     /**
      * @param string $name

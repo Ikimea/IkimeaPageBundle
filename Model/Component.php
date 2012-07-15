@@ -19,17 +19,12 @@ namespace Ikimea\PageBundle\Model;
 abstract class Component implements ComponentInterface{
 
     protected $id;
-
-    protected $zone;
-
+    protected $area;
     protected $type;
-
     protected $value;
 
     /**
-     * Get id
-     *
-     * @return integer
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -37,29 +32,23 @@ abstract class Component implements ComponentInterface{
     }
 
     /**
-     * Set zone
-     *
-     * @param string $zone
+     * {@inheritdoc}
      */
-    public function setZone($zone)
+    public function setArea($area)
     {
-        $this->zone = $zone;
+        $this->area = $area;
     }
 
     /**
-     * Get zone
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getZone()
+    public function getArea()
     {
-        return $this->zone;
+        return $this->area;
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
+     * {@inheritdoc}
      */
     public function setName($name)
     {
@@ -67,9 +56,7 @@ abstract class Component implements ComponentInterface{
     }
 
     /**
-     * Get name
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -77,9 +64,7 @@ abstract class Component implements ComponentInterface{
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
+     * {@inheritdoc}
      */
     public function setType($type)
     {
@@ -87,9 +72,7 @@ abstract class Component implements ComponentInterface{
     }
 
     /**
-     * Get type
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getType()
     {
@@ -97,9 +80,7 @@ abstract class Component implements ComponentInterface{
     }
 
     /**
-     * Get value
-     *
-     * @return value
+     * {@inheritdoc}
      */
     public function getValue()
     {
@@ -107,9 +88,7 @@ abstract class Component implements ComponentInterface{
     }
 
     /**
-     * Set value
-     *
-     * @param value $value
+     * {@inheritdoc}
      */
     public function setValue($value)
     {

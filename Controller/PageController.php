@@ -3,7 +3,7 @@
 /*
 * This file is part of the Ikimea Pages package.
 *
-* (c) Ikimea Pages <http://www.ikimea.com/>
+* (c) Ikimea <http://www.ikimea.com/>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -13,47 +13,53 @@ namespace Ikimea\PageBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
+use Ikimea\PageBundle\Util\Url;
 use Ikimea\PageBundle\Entity\Component;
 use Ikimea\PageBundle\Form\ComponentType;
 
 class PageController extends Controller {
     
-    public $_template = 'IkimeaPageBundle:Page:show.html.twig';
+    public $defaultTemplatePath = 'IkimeaPageBundle:Page:show.html.twig';
 
 
+    /**
+     * Displays page
+     *
+     * @param String $slug  Page slug
+     * @param String $variables Variables to be passed to the displayed page
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction() {
 
-        $pathInfo = ltrim($this->get('request')->getPathInfo(), '/' );
-        $params = array();
+        $slug = Url::format($this->get('request')->getPathInfo());
 
-        $page = $this->getDoctrine()->getRepository('IkimeaPageBundle:Page')->getPageBySlug($pathInfo);
+        $page = $this->getDoctrine()->getRepository('IkimeaPageBundle:Page')->getPageBySlug($slug);
 
         if (!$page) {
-
             throw new NotFoundHttpException('The current url does not exist!');
         }
 
+        if (null != $page->getCredentials() && !$this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
 
         if ($this->has('ikimea_page.breadcrumb')) {
             $breadcrumbs = $this->get('ikimea_page.breadcrumb');
-            $breadcrumbs->addChild($page->getName())->setCurrent(true);
-            $breadcrumbs->addChild($page->getName(), array('uri' => '/solution'));
+            $breadcrumbs->addChild($page->getName());
         }
 
-        $params['breadcrumb'] = $breadcrumbs;
         $params['page'] = $page;
-
-
         $this->addSeoMeta($page);
 
-
-
-        if(null != $page->getTemplate()){
-
-            $this->_template = $page->getTemplate();
+        if (null != $page->getTemplate()){
+            $this->defaultTemplatePath = $page->getTemplate();
         }
 
-        return $this->render($this->_template, $params);
+        return $this->render($this->defaultTemplatePath, $params);
     }
 
     public function editAction($slug) {
@@ -66,7 +72,9 @@ class PageController extends Controller {
         return $this->get('sonata.seo.page');
     }
     
-    
+    /*
+     * set meta description
+     */
     protected function addSeoMeta($page)
     {
         

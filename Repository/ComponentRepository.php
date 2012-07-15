@@ -3,7 +3,7 @@
 /*
 * This file is part of the Ikimea Pages package.
 *
-* (c) Ikimea Pages <http://www.ikimea.com/>
+* (c) Ikimea <http://www.ikimea.com/>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -21,7 +21,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class ComponentRepository extends EntityRepository
 {
-    public function getAllComponentsByZone($parent){
+    public function getAllComponentsByArea($parent){
         return $this->createQueryBuilder('c')
         ->where('c.zone = :parent')
         ->setParameter('parent',$parent)

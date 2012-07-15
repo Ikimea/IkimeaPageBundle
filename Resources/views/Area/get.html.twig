@@ -1,0 +1,17 @@
+<section id="zone{{area.id}}" class="{% if is_granted('ROLE_ADMIN') %}get{% endif %} zone clearfix" rel="{{area.id}}">
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="#" class="open-config"></a>
+    <div class="option clearfix">
+        <ul>
+            <li><a href="#">Modifier</a></li>
+        </ul>
+    </div>
+    {% endif %}
+    <div class="content clearfix">
+        {% for component in area.components %}
+            {% include 'IkimeaPageBundle:Components:' ~ component.type ~ '.html.twig' with { 'component': component } %}
+        {% endfor %}
+    </div>
+    <div class="clearfix"></div>
+</section>
+

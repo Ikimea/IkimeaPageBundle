@@ -1,13 +1,13 @@
-zone_get:
-  pattern:  /page/zone/{name}/get
-  defaults: { _controller: IkimeaPageBundle:Zone:get }
+area_get:
+  pattern:  /page/area/{name}/get
+  defaults: { _controller: IkimeaPageBundle:Area:get }
 
 component_show:
   pattern:  /page/component/{id}/show
   defaults: { _controller: IkimeaPageBundle:Component:show }
   
 component_new:
-  pattern:  /page/component/{zone}/new
+  pattern:  /page/component/{area}/new
   defaults: { _controller: IkimeaPageBundle:Component:new }
   
 component_edit:
