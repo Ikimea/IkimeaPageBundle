@@ -57,31 +57,28 @@
     height: 5px;
 }
 
-/****** ZONE *****/
-.zone{
+/****** Area *****/
+.area{
     padding: 10px;
     margin: 10px 0;
     position: relative;
 }
 
-.zone.droppable-hover{ border: 2px dotted #CCE0F5; cursor: move; }
-.zone a.open-config{
+.area.droppable-hover{ border: 2px dotted #CCE0F5; cursor: move; }
+.area a.open-config{
     background: url(/bundles/ikimeapage/images/gear-select.png) no-repeat;
     width: 28px;
     height: 18px;
     display: block;
     float: right;
 }
-.zone a.open-config:hover{
+.area a.open-config:hover{
     background-position: 0 -18px;
 }
-.zone a.open-config.active{
-    background: url(/bundles/ikimeapage/images/gear-unselect.png) no-repeat;
-}
-.zone a.open-config.active:hover{
+.area a.open-config.active:hover{
     background-position: 0 -18px;
 }
-.zone a.open-config.active{ 
+.area a.open-config.active{
     background-color: #FFFFFF;
     border: 1px solid;
     border-bottom: none;
@@ -90,7 +87,7 @@
     position: relative;
     z-index: 1;
 }
-.zone .option{
+.area .option{
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     border-radius: 4px 0 4px 4px;
@@ -105,16 +102,16 @@
     position: absolute;
     width: 100px;
 }
-.zone .option ul li{ text-align: center; }
-.zone .option ul li a{ display: block; color: #333333; margin: 0.25em 0; padding: 0.25em 1em 0.25em 0.5em;  text-decoration: none; font-family: "Helvetica Neue",Helvetica, 'HelveticaNeueLTStd77BdCn',Arial,sans-serif; }
-.zone .option ul li a:hover{ background-color: #BFDCEE;  }
+.area .option ul li{ text-align: center; }
+.area .option ul li a{ display: block; color: #333333; margin: 0.25em 0; padding: 0.25em 1em 0.25em 0.5em;  text-decoration: none; font-family: "Helvetica Neue",Helvetica, 'HelveticaNeueLTStd77BdCn',Arial,sans-serif; }
+.area .option ul li a:hover{ background-color: #BFDCEE;  }
 
-.zone .component.components-text{
+.area .component.components-text{
     margin-top: 25px;
 }
-.zone .component.components-text .ikp-controls{ margin-bottom: 10px;  }
-.zone .component ul li{ clear: none;  float: left;margin: 0 2px 2px 0; }
-.zone .component ul li a, .zone .component .ikp-btn{
+.area .component.components-text .ikp-controls{ margin-bottom: 10px;  }
+.area .component ul li{ clear: none;  float: left;margin: 0 2px 2px 0; }
+.area .component ul li a, .zone .component .ikp-btn{
     -moz-border-bottom-colors: none;
     -moz-border-image: none;
     -moz-border-left-colors: none;
@@ -133,10 +130,10 @@
     text-decoration: none;
     text-shadow: 0 1px 1px #FFFFFF;
 }
-.zone .component .ikp-btn.icon{padding: 4px 4px 0 20px;}
-.zone .component ul li a{display: block;}
-.zone .component .ikp-btn{ /*width: 21px; */ height: 15px; position: relative; padding-top: 10px; }
-.zone .component .ikp-btn span.icon{
+.area .component .ikp-btn.icon{padding: 4px 4px 0 20px;}
+.area .component ul li a{display: block;}
+.area .component .ikp-btn{ /*width: 21px; */ height: 15px; position: relative; padding-top: 10px; }
+.area .component .ikp-btn span.icon{
     background: url("/bundles/ikimeapage/images/a-icon-sprite.png");
     background-repeat: no-repeat;
     display: block;
@@ -149,7 +146,7 @@
     top: 50%;
     width: 20px;
 }
-.zone .component .ikp-btn.order span{ background-position: 0 -20px; }
-.zone .component .ikp-btn.edit span{ background-position: 0 -440px; }
-.zone .component .ikp-btn.delete span{ background-position: -20px -1440px; }
-.zone .component .ikp-btn.submit, .zone .component .ikp-btn.reset { height: 27px; padding-top: 1px; }
+.area .component .ikp-btn.order span{ background-position: 0 -20px; }
+.area .component .ikp-btn.edit span{ background-position: 0 -440px; }
+.area .component .ikp-btn.delete span{ background-position: -20px -1440px; }
+.area .component .ikp-btn.submit, .area .component .ikp-btn.reset { height: 27px; padding-top: 1px; }

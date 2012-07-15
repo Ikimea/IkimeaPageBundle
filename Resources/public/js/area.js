@@ -1,18 +1,18 @@
 $(function(){ 
     
-    $(".zone").droppable({
+    $(".area").droppable({
         hoverClass: 'droppable-hover',
         drop: function( event, ui ) {
 
-            composant=  ui.draggable.clone();
+            var composant=  ui.draggable.clone();
             composant = $(composant);
         
-            zone = $(this);
+            area = $(this);
         
             switch(composant.attr('id')){
                 case 'component-text':
-                    $.post('/page/component/'+ zone.attr('rel') +'/new', function(data) {
-                        zone.append(data);     
+                    $.post('/page/component/'+ area.attr('rel') +'/new', function(data) {
+                        area.append(data);
                     });
                     break;
             
@@ -21,7 +21,7 @@ $(function(){
         }
     });   
     
-    $('.zone a.open-config').click(function(e){
+    $('.area a.open-config').click(function(e){
         var parent = $(this).parent();
         var option = parent.find('.option');
 
@@ -37,20 +37,18 @@ $(function(){
 
     });
     
-    if( $('.zone.get').length > 0 ){
-        var zone  = $('.zone.get').attr('rel');
-        $.get('/page/zone/'+ zone + '/get' , function(data) {
+    if( $('.area.get').length > 0 ){
+        var area  = $('.zone.get').attr('rel');
+        $.get('/page/zone/'+ area + '/get' , function(data) {
                 $('.zone .content').html(data);
 
-                $('.zone .content .component .ikp-controls .edit').click(function(e){
+                $('.area .content .component .ikp-controls .edit').click(function(e){
                     e.preventDefault();
                     e.stopPropagation();
-                    
-                    console.log($('#component'+component_id));
 
                     var component_id = $(this).attr('rel');
                     $('#component'+component_id + ' .ikp-controls').hide();
-                    $('#component'+component_id + ' .ikp-content').load('/page/component/'+ component_id +'/edit');
+                    $('#component'+component_id + ' .component-content').load('/page/component/'+ component_id +'/edit');
                     $('#component-'+component_id).attr('style', 'width:650px; height: 300px;');
                 });
 
