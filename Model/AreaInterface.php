@@ -50,4 +50,9 @@ interface AreaInterface
      */
     public function getComponents();
 
+    /**
+     * @param string $components
+     */
+    public function setComponents($components);
+
 }

@@ -38,13 +38,14 @@ $(function(){
     });
     
     if( $('.area.get').length > 0 ){
-        var area  = $('.zone.get').attr('rel');
-        $.get('/page/zone/'+ area + '/get' , function(data) {
+        var area  = $('.area.get').attr('rel');
+        var area_route = Routing.generate('area_get', { name: area });
+
+        $.get(area_route , function(data) {
                 $('.zone .content').html(data);
 
-                $('.area .content .component .ikp-controls .edit').click(function(e){
+                $('.area .content .component .controls .edit').click(function(e){
                     e.preventDefault();
-                    e.stopPropagation();
 
                     var component_id = $(this).attr('rel');
                     $('#component'+component_id + ' .ikp-controls').hide();
@@ -62,9 +63,10 @@ $(function(){
         var Btn = $(thas).find('.submit');
         var iForm = $(thas);
         var iFormURL = iForm.attr('action');
+
         Btn.click(function(event){
             event.preventDefault();
-            var update = $(thas).parent('.ikp-content');
+            var update = $(thas).parent('.content');
             $.ajax({
                 type: 'POST',
                 url: iFormURL,
@@ -72,8 +74,8 @@ $(function(){
                 data: iForm.serialize(),
                 success: function(data){
                     $(update).html(data);
-                    console.log(data);
-                    $(update).parent().find('.ikp-controls').show();
+                    $(update).parent().find('.controls').show();
+                    $(thas).parent().html(data);
                 }
             });
         });

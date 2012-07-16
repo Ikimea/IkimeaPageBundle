@@ -29,14 +29,14 @@ class Area implements AreaInterface{
      * {@inheritdoc}
      */
     public function getId(){
-
+       return $this->id;
     }
 
     /**
      * {@inheritdoc}
      */
     public function getName(){
-        $this->name;
+        return $this->name;
     }
 
     /**
@@ -72,6 +72,13 @@ class Area implements AreaInterface{
      */
     public function getComponents(){
         return $this->components;
+    }
+
+    /**
+        * {@inheritdoc}
+    */
+    public function setComponents($components){
+        $this->components = $components;
     }
 
 }

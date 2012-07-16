@@ -109,9 +109,9 @@
 .area .component.components-text{
     margin-top: 25px;
 }
-.area .component.components-text .ikp-controls{ margin-bottom: 10px;  }
+.area .component.components-text .controls{ margin-bottom: 10px;  }
 .area .component ul li{ clear: none;  float: left;margin: 0 2px 2px 0; }
-.area .component ul li a, .zone .component .ikp-btn{
+.area .component ul li a, .zone .component .btn, .component-form input.submit, .component-form input.reset{
     -moz-border-bottom-colors: none;
     -moz-border-image: none;
     -moz-border-left-colors: none;
@@ -130,10 +130,10 @@
     text-decoration: none;
     text-shadow: 0 1px 1px #FFFFFF;
 }
-.area .component .ikp-btn.icon{padding: 4px 4px 0 20px;}
+.area .component .btn.icon{padding: 4px 4px 0 20px;}
 .area .component ul li a{display: block;}
-.area .component .ikp-btn{ /*width: 21px; */ height: 15px; position: relative; padding-top: 10px; }
-.area .component .ikp-btn span.icon{
+.area .component .btn{ /*width: 21px; */ height: 15px; position: relative; padding-top: 10px; }
+.area .component .btn span.icon{
     background: url("/bundles/ikimeapage/images/a-icon-sprite.png");
     background-repeat: no-repeat;
     display: block;
@@ -146,7 +146,22 @@
     top: 50%;
     width: 20px;
 }
-.area .component .ikp-btn.order span{ background-position: 0 -20px; }
-.area .component .ikp-btn.edit span{ background-position: 0 -440px; }
-.area .component .ikp-btn.delete span{ background-position: -20px -1440px; }
-.area .component .ikp-btn.submit, .area .component .ikp-btn.reset { height: 27px; padding-top: 1px; }
+.area .component .btn.order span{ background-position: 0 -20px; }
+.area .component .btn.edit span{ background-position: 0 -440px; }
+.area .component .btn.delete span{ background-position: -20px -1440px; }
+.area .component .btn.submit, .area .component .ikp.reset { height: 27px; padding-top: 1px; }
+.component-form{
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    float: left;
+    left: -5px;
+    list-style: none outside none;
+    margin: 0;
+    min-width: 100%;
+    padding: 35px 5px 5px;
+    position: absolute;
+    top: -6px;
+    width: auto;
+    z-index: 1;
+}

@@ -53,7 +53,6 @@ class AreaController extends Controller
             $area = $em->getRepository('IkimeaPageBundle:Area')->getArea($name, $page->getId(), $culture);
         }
 
-
         return $this->render('IkimeaPageBundle:Area:get.html.twig', array('area' => $area));
     }
 }

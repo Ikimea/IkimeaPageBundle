@@ -13,17 +13,31 @@ namespace Ikimea\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 use Ikimea\PageBundle\Entity\Component;
 use Ikimea\PageBundle\Form\ComponentType;
 
 class ComponentController extends Controller {
 
-    public function newAction($zone) {
+    /**
+     * @param $area id the area
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws
+     */
+    public function newAction($area) {
         
         $em = $this->getDoctrine()->getManager();
+        $area =  $entity = $em->getRepository('IkimeaPageBundle:Area')->find($area);
+
+        if (!$area){
+
+         throw createNotFoundException(sprintf('The Area "%s" was not found.', $area ));
+
+        }
 
         $entity = new Component();
-        $entity->setZone($zone);
+        $entity->setArea($area);
         $entity->setValue('Nouveau widget Texte');
         $entity->setType('richtext');
 
@@ -38,7 +52,11 @@ class ComponentController extends Controller {
         return $response;
     }
 
-    public function showAction() {
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showAction($id) {
 
         $em = $this->getDoctrine()->getManager();
         $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);
@@ -46,10 +64,38 @@ class ComponentController extends Controller {
         return $this->render('IkimeaPageBundle:Components:' . $component->getType() . '.html.twig', array('component' => $component));
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function editAction($id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);
+
+
+        if (!$component) {
+            throw $this->createNotFoundException('Unable to find Component entity.');
+        }
+
+        $editForm = $this->createForm(new ComponentType(), $component);
+
+        return $this->render('IkimeaPageBundle:Component:edit.html.twig', array(
+            'component' => $component,
+            'edit_form' => $editForm->createView()
+        ));
+
+    }
+
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     public function updateAction($id) {
         $em = $this->getDoctrine()->getManager();
-        $sfResponse = new Response();
-
+        $request = $this->getRequest();
         $entity = $em->getRepository('IkimeaPageBundle:Component')->find($id);
 
         if (!$entity) {
@@ -57,53 +103,17 @@ class ComponentController extends Controller {
         }
 
         $editForm = $this->createForm(new ComponentType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        $request = $this->getRequest();
-
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            
-            if($request->get('xhr')){
-                echo $entity->{'get'.ucfirst($entity->getType())}();
-                return $sfResponse;
-            }
+            $response =  new Response( $entity->getValue(), 200 );
+        }else{
+            $response = $this->forward('IkimeaPageBundle:Component:show', array('id' => $entity->getId()));
         }
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return $response;
     }
-
-    public function editAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('IkimeaPageBundle:Component')->find($id);
-
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Component entity.');
-        }
-
-        $editForm = $this->createForm(new ComponentType(), $entity);
-
-        return $this->render('IkimeaPageBundle:Component:edit.html.twig', array(
-            'component' => $entity,
-            'edit_form' => $editForm->createView()
-        ));
-        
-    }
-
-    private function createDeleteForm($id) {
-        return $this->createFormBuilder(array('id' => $id))
-                        ->add('id', 'hidden')
-                        ->getForm()
-        ;
-    }
-
 }

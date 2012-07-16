@@ -12,6 +12,7 @@
 
 namespace Ikimea\PageBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use Ikimea\PageBundle\Model\Area as BaseArea;
@@ -20,4 +21,11 @@ use Ikimea\PageBundle\Model\Area as BaseArea;
 
 class Area extends BaseArea{
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    public function __construct()
+    {
+        $this->components = new ArrayCollection();
+    }
 }

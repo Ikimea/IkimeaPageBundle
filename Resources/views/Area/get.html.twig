@@ -1,4 +1,4 @@
-<section id="area{{area.id}}" class="{% if is_granted('ROLE_ADMIN') %}get{% endif %} area clearfix" rel="{{area.id}}">
+<section id="area{{ area.id }}" class="{% if is_granted('ROLE_ADMIN') %}get{% endif %} area clearfix" rel="{{area.id}}">
     {% if is_granted('ROLE_ADMIN') %}
     <a href="#" class="open-config"></a>
     <div class="option clearfix">

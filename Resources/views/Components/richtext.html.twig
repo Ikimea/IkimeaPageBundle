@@ -1,9 +1,9 @@
 <div id="component{{ component.id }}" class="component components-text" rel="{{ component.id }}">
     {% if is_granted('ROLE_ADMIN') %}
-    <ul class="ikp-controls clearfix">
+    <ul class="controls clearfix">
         <li><a href="#" class="btn order icon"><span class="icon"></span></a></li>
         <li><a href="#" rel="{{ component.id }}" class="btn edit icon"><span class="icon"></span>Edit</a></li>
-        <li><a class="ikp-btn delete icon"><span class="icon"></span>Delete</a></li>
+        <li><a class="btn delete icon"><span class="icon"></span>Delete</a></li>
     </ul>
      {% endif %}
     <div class="component-content clearfix">
