@@ -17,6 +17,11 @@ namespace Ikimea\PageBundle\Util;
  */
 class Url {
 
+    /**
+     * @static
+     * @param $pathinfo
+     * @return string
+     */
     public static function format($pathinfo)
     {
         //delete first slash
