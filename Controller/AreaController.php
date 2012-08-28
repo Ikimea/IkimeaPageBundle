@@ -22,7 +22,7 @@ use Ikimea\PageBundle\Util\Url;
 
 class AreaController extends Controller
 {
-    
+
     public function getAction($name )
     {
         $em = $this->container->get('doctrine.orm.entity_manager');
@@ -38,7 +38,7 @@ class AreaController extends Controller
 
         $getArea =  $em->getRepository('IkimeaPageBundle:Area')->areaExist($name, $page->getId(), $culture );
 
-        if(false === $getArea){
+        if (false === $getArea) {
 
            $area =  new Area();
            $area->setPage($page);
@@ -48,7 +48,7 @@ class AreaController extends Controller
 
            $em->persist($area);
            $em->flush();
-        }else{
+        } else {
 
             $area = $em->getRepository('IkimeaPageBundle:Area')->getArea($name, $page->getId(), $culture);
         }

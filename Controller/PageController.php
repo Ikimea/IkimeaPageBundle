@@ -20,7 +20,7 @@ use Ikimea\PageBundle\Entity\Component;
 use Ikimea\PageBundle\Form\ComponentType;
 
 class PageController extends Controller {
-    
+
     public $defaultTemplatePath = 'IkimeaPageBundle:Page:show.html.twig';
 
 
@@ -33,7 +33,8 @@ class PageController extends Controller {
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction() {
+    public function showAction()
+    {
 
         $slug = Url::format($this->get('request')->getPathInfo());
 
@@ -55,37 +56,42 @@ class PageController extends Controller {
         $params['page'] = $page;
         $this->addSeoMeta($page);
 
-        if (null != $page->getTemplate()){
+        if (null != $page->getTemplate()) {
             $this->defaultTemplatePath = $page->getTemplate();
         }
 
         return $this->render($this->defaultTemplatePath, $params);
     }
 
-    public function editAction($slug) {
-        
+    /**
+     * Edit page
+     * @param String $slug Page slug
+     */
+    public function editAction($slug)
+    {
+
     }
-    
-    
+
+
     public function getSeoPage()
     {
         return $this->get('sonata.seo.page');
     }
-    
+
     /*
      * set meta description
      */
     protected function addSeoMeta($page)
     {
-        
+
         if($this->container->hasParameter('ikimea_page.seo')){
             $page_seo  = $this->container->getParameter('ikimea_page.seo');
-            $this->getSeoPage()->setTitle($page_seo['title_prefix'].$page->getName(). $page_seo['title_suffix']); 
-            
-        }else{
-            $this->getSeoPage()->setTitle($page->getName());        
+            $this->getSeoPage()->setTitle($page_seo['title_prefix'].$page->getName(). $page_seo['title_suffix']);
+
+        } else {
+            $this->getSeoPage()->setTitle($page->getName());
         }
-        
+
 
         if ($page->getMetaDescription()) {
             $this->getSeoPage()->addMeta('name', 'description', $page->getMetaDescription());

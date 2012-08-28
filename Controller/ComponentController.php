@@ -26,7 +26,7 @@ class ComponentController extends Controller {
      * @throws
      */
     public function newAction($area) {
-        
+
         $em = $this->getDoctrine()->getManager();
         $area =  $entity = $em->getRepository('IkimeaPageBundle:Area')->find($area);
 
@@ -110,7 +110,7 @@ class ComponentController extends Controller {
             $em->flush();
 
             $response =  new Response( $entity->getValue(), 200 );
-        }else{
+        } else {
             $response = $this->forward('IkimeaPageBundle:Component:show', array('id' => $entity->getId()));
         }
 
