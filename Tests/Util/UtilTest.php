@@ -15,7 +15,8 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 {
     public function testUrl()
     {
-        $url = Url::format('/fr/metiers');
-        $this->assertEquals($url, 'metiers');
+        $this->assertEquals(Url::format('/fr/metiers'), 'metiers');
+        $this->assertEquals(Url::format('metiers'), 'metiers');
+        $this->assertEquals(Url::format('/fr/metiers/nos-postes'), '/metiers/nos-postes');
     }
 }
