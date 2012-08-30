@@ -25,15 +25,14 @@ class ComponentController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws
      */
-    public function newAction($area) {
+    public function newAction($area)
+    {
 
         $em = $this->getDoctrine()->getManager();
         $area =  $entity = $em->getRepository('IkimeaPageBundle:Area')->find($area);
 
-        if (!$area){
-
-         throw createNotFoundException(sprintf('The Area "%s" was not found.', $area ));
-
+        if (!$area) {
+            throw createNotFoundException(sprintf('The Area "%s" was not found.', $area ));
         }
 
         $entity = new Component();
@@ -56,7 +55,8 @@ class ComponentController extends Controller {
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction($id) {
+    public function showAction($id)
+    {
 
         $em = $this->getDoctrine()->getManager();
         $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);
@@ -69,7 +69,8 @@ class ComponentController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function editAction($id) {
+    public function editAction($id)
+    {
 
         $em = $this->getDoctrine()->getManager();
         $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);
@@ -93,7 +94,8 @@ class ComponentController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function updateAction($id) {
+    public function updateAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
         $entity = $em->getRepository('IkimeaPageBundle:Component')->find($id);
