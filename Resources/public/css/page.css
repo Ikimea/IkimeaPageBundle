@@ -28,7 +28,7 @@
 #toolbar .toolbar-menu ul.parent li{
     padding: 0 16px 0 10px;
     position: relative;
-    
+
 }
 #toolbar .toolbar-menu ul.parent li a{
     color: #ffffff;
@@ -50,7 +50,7 @@
 }
 #toolbar .toolbar-menu .box ul li a{
     color: #000;
-}      
+}
 #toolbar #toolbar-footer{
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.1, #555555), color-stop(0.1, #555555), color-stop(0.9, #444547), color-stop(1.0, #444547));
     background-color: #555;
@@ -106,9 +106,8 @@
 .area .option ul li a{ display: block; color: #333333; margin: 0.25em 0; padding: 0.25em 1em 0.25em 0.5em;  text-decoration: none; font-family: "Helvetica Neue",Helvetica, 'HelveticaNeueLTStd77BdCn',Arial,sans-serif; }
 .area .option ul li a:hover{ background-color: #BFDCEE;  }
 
-.area .component.components-text{
-    margin-top: 25px;
-}
+.area .component.components-text{ margin-top: 25px; }
+.area .component-content{ z-index: 99; }
 .area .component.components-text .controls{ margin-bottom: 10px;  }
 .area .component ul li{ clear: none;  float: left;margin: 0 2px 2px 0; }
 .area .component ul li a, .zone .component .btn, .component-form input.submit, .component-form input.reset{

@@ -1,84 +1,88 @@
-$(function(){ 
-    
+$(function(){
+
     $(".area").droppable({
         hoverClass: 'droppable-hover',
         drop: function( event, ui ) {
 
-            var composant=  ui.draggable.clone();
-            composant = $(composant);
-        
-            area = $(this);
-        
+            var composant =  jQuery(ui.draggable.clone());
+            var area = jQuery(this);
+
             switch(composant.attr('id')){
                 case 'component-text':
-                    $.post('/page/component/'+ area.attr('rel') +'/new', function(data) {
+                    jQuery.post('/page/component/'+ area.attr('rel') +'/new', function(data) {
                         area.append(data);
                     });
                     break;
-            
+
                 default:
-            }   
+            }
         }
-    });   
-    
-    $('.area a.open-config').click(function(e){
-        var parent = $(this).parent();
+    });
+
+    jQuery('.area a.open-config').click(function(e){
+        var parent = jQuery(this).parent();
         var option = parent.find('.option');
 
-        $(this).addClass('active');
+        jQuery(this).addClass('active');
 
-        if(option.is(":hidden")){
+        if (option.is(":hidden")) {
             option.toggle('show');
-            $(this).addClass('active');
-        }else{
+            jQuery(this).addClass('active');
+        } else {
             option.toggle('hide');
-            $(this).removeClass('active');
+            jQuery(this).removeClass('active');
         }
 
     });
-    
+
     if( $('.area.get').length > 0 ){
-        var area  = $('.area.get').attr('rel');
+        var area  = jQuery('.area.get').attr('rel');
         var area_route = Routing.generate('area_get', { name: area });
 
-        $.get(area_route , function(data) {
-                $('.zone .content').html(data);
+        jQuery.get(area_route , function(data) {
+            jQuery('.zone .content').html(data);
 
-                $('.area .content .component .controls .edit').click(function(e){
+            jQuery('.area .content .component .controls .edit').click(function(e){
                     e.preventDefault();
 
                     var component_id = $(this).attr('rel');
-                    $('#component'+component_id + ' .ikp-controls').hide();
-                    $('#component'+component_id + ' .component-content').load('/page/component/'+ component_id +'/edit');
-                    $('#component-'+component_id).attr('style', 'width:650px; height: 300px;');
-                });
+                    jQuery('#component'+component_id + ' .ikp-controls').hide();
+                    jQuery('#component'+component_id + ' .component-content').load('/page/component/'+ component_id +'/edit');
+            });
 
          });
 
     }
 
-}); 
-    function ikpRemoteSubmit(thas){
- 
-        var Btn = $(thas).find('.submit');
-        var iForm = $(thas);
-        var iFormURL = iForm.attr('action');
+});
 
-        Btn.click(function(event){
-            event.preventDefault();
-            var update = $(thas).parent('.content');
-            $.ajax({
+Teresa.area  = {
+    init : function(){
+      this.send();
+    },
+    send : function(){
+        Teresa.log('data modify');
+
+        jQuery('.component-form .submit').live('click', function(e){
+            e.preventDefault();
+            var form_data = jQuery(this).parent('form');
+            var form_action = form_data.attr('action');
+            var update = form_data.parent().parent().parent();
+
+
+            jQuery.ajax({
                 type: 'POST',
-                url: iFormURL,
+                url: form_action,
                 dataType: 'html',
-                data: iForm.serialize(),
+                data: form_data.serialize(),
                 success: function(data){
-                    $(update).html(data);
-                    $(update).parent().find('.controls').show();
-                    $(thas).parent().html(data);
+                    update.html(data);
+                    update.parent().find('.controls').show();
+                    form_data.parent().html(data);
                 }
             });
         });
     }
+}
 
-   
+Teresa.area.init();
