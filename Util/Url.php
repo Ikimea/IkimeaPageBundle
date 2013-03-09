@@ -15,20 +15,4 @@ namespace Ikimea\PageBundle\Util;
 /**
  *  Formate URL
  */
-class Url {
-
-    /**
-     * @static
-     * @param $pathinfo
-     * @return string
-     */
-    public static function format($pathinfo)
-    {
-        //delete first slash
-        $pathInfo = ltrim($pathinfo, '/' );
-        $slug = explode('/', $pathinfo);
-        $slug = $slug[count($slug) - 1];
-
-        return  $slug;
-    }
-}
+class Url { }
