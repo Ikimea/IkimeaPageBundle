@@ -16,8 +16,8 @@ namespace Ikimea\PageBundle\Model;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-abstract class Component implements ComponentInterface{
-
+abstract class Component implements ComponentInterface
+{
     protected $id;
     protected $area;
     protected $type;

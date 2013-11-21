@@ -16,5 +16,6 @@ use Ikimea\PageBundle\Model\Component as BaseComponent;
 
 
 
-class Component extends BaseComponent {
+class Component extends BaseComponent
+{
 }

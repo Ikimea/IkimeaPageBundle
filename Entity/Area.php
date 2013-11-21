@@ -19,8 +19,8 @@ use Ikimea\PageBundle\Model\Area as BaseArea;
 
 
 
-class Area extends BaseArea{
-
+class Area extends BaseArea
+{
     /**
      * @var \Doctrine\Common\Collections\Collection
      */

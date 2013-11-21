@@ -9,27 +9,30 @@
 * file that was distributed with this source code.
 */
 
-namespace Ikimea\PageBundle\Form;
+namespace Ikimea\PageBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
-class ComponentType extends AbstractType {
+class ComponentType extends AbstractType
+{
 
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder->add('value', 'ckeditor');
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver) {
-
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
         $resolver->setDefaults(array(
             'data_class' => 'Ikimea\PageBundle\Entity\Component',
         ));
     }
 
-    public function getName() {
+    public function getName()
+    {
         return 'component';
     }
 

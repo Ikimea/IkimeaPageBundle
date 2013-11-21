@@ -21,7 +21,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class ComponentRepository extends EntityRepository
 {
-    public function getAllComponentsByArea($parent){
+    public function getAllComponentsByArea($parent)
+    {
         return $this->createQueryBuilder('c')
         ->where('c.zone = :parent')
         ->setParameter('parent',$parent)

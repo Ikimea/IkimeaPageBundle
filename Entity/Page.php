@@ -17,7 +17,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Ikimea\PageBundle\Model\Page as BasePage;
 
-class Page extends BasePage{
+class Page extends BasePage
+{
 
     /**
      * @var \Doctrine\Common\Collections\Collection

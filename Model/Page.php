@@ -23,7 +23,6 @@ abstract class Page implements PageInterface
 {
     const ROLE_SUPER_ADMIN = 'ROLE_ADMIN';
 
-
     protected $id;
     protected $name;
     protected $slug;

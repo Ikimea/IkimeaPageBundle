@@ -24,12 +24,13 @@ class PageRepository extends EntityRepository
     /*
      *  get page by slug
      */
-    public function getPageBySlug($slug){
-
+    public function getPageBySlug($slug)
+    {
        return $this->findOneBy(array('slug' => $slug));
     }
 
-    public function getArea($slug, $name){
+    public function getArea($slug, $name)
+    {
         return $this->createQueryBuilder('p')
             ->leftJoin('p.areas', 'z')
             ->leftJoin('z.components', 'c')

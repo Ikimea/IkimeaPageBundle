@@ -41,7 +41,6 @@ class AreaRepository extends EntityRepository
             ->setParameter('slug',$parent)
             ->setMaxResults(1)
             ->getQuery();
-         //echo $results->getSQL() . '<br />';
          return $results->getOneOrNullResult();
     }
 

@@ -18,7 +18,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Ikimea\PageBundle\Entity\Component;
 use Ikimea\PageBundle\Form\ComponentType;
 
-class ComponentController extends Controller {
+class ComponentController extends Controller
+{
 
     /**
      * @param $area id the area

@@ -102,7 +102,6 @@ interface PageInterface
     /**
      * set areas
     */
-
     public function setAreas($areas);
 
 }

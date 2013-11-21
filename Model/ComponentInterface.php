@@ -17,7 +17,6 @@ namespace Ikimea\PageBundle\Model;
 
 interface ComponentInterface
 {
-
     /**
      * @return integer
      */

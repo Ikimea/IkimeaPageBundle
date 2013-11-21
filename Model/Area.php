@@ -16,7 +16,8 @@ namespace Ikimea\PageBundle\Model;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-class Area implements AreaInterface{
+class Area implements AreaInterface
+{
 
     protected $id;
     protected $page_id;

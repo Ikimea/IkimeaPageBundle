@@ -19,7 +19,8 @@ use Ikimea\PageBundle\Util\Url;
 use Ikimea\PageBundle\Entity\Component;
 use Ikimea\PageBundle\Form\ComponentType;
 
-class PageController extends Controller {
+class PageController extends Controller
+{
 
     public $defaultTemplatePath = 'IkimeaPageBundle:Page:show.html.twig';
 

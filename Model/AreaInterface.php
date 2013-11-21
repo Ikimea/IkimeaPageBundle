@@ -34,7 +34,6 @@ interface AreaInterface
      */
     public function setName($name);
 
-
     /**
      * @return string $name
      */
