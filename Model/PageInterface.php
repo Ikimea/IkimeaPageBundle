@@ -110,11 +110,25 @@ interface PageInterface
     public function getLocale();
 
     /**
-     * Get local
+     * set local
      *
      * @param string $culture
      */
     public function setLocale($culture);
+
+    /**
+     * Get route
+     *
+     * @return string $route
+     */
+    public function getRoute();
+
+    /**
+     * set route
+     *
+     * @param string $route
+     */
+    public function setRoute($route);
 
     /**
      * @param string $template

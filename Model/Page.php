@@ -58,6 +58,7 @@ abstract class Page implements PageInterface
     public function setName($name)
     {
         $this->name = $name;
+        $this->setSlug($name);
     }
 
     /**
@@ -65,7 +66,7 @@ abstract class Page implements PageInterface
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = self::slugify(trim($slug));
     }
 
     /**
@@ -90,6 +91,26 @@ abstract class Page implements PageInterface
     public function setLocale($locale)
     {
         $this->locale = $locale;
+    }
+
+    /**
+     * Get route
+     *
+     * @return string $route
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * set route
+     *
+     * @param string $route
+     */
+    public function setRoute($route)
+    {
+        $this->route = $route;
     }
 
     /**
@@ -244,5 +265,36 @@ abstract class Page implements PageInterface
     public function getAreas()
     {
         return $this->areas;
+    }
+
+    /**
+     * source : http://snipplr.com/view/22741/slugify-a-string-in-php/
+     *
+     * @static
+     *
+     * @param string $text
+     *
+     * @return mixed|string
+     */
+    public static function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv')) {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        return $text;
     }
 }
