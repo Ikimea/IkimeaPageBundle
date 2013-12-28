@@ -1,20 +1,30 @@
 area_get:
   pattern:  /page/area/{name}/get
   defaults: { _controller: IkimeaPageBundle:Area:get }
+  options:
+    expose: true
 
 component_show:
   pattern:  /page/component/{id}/show
   defaults: { _controller: IkimeaPageBundle:Component:show }
+  options:
+      expose: true
   
 component_new:
   pattern:  /page/component/{area}/new
   defaults: { _controller: IkimeaPageBundle:Component:new }
+  options:
+      expose: true
   
 component_edit:
   pattern:  /page/component/{id}/edit
   defaults: { _controller: IkimeaPageBundle:Component:edit }
+  options:
+      expose: true
   
 component_update:
   pattern:  /page/component/{id}/update
   defaults: { _controller: IkimeaPageBundle:Component:update }
   requirements: { _method: post }
+  options:
+      expose: true

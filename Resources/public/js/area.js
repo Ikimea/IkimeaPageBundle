@@ -13,7 +13,6 @@ $(function(){
                         area.append(data);
                     });
                     break;
-
                 default:
             }
         }
@@ -32,7 +31,6 @@ $(function(){
             option.toggle('hide');
             jQuery(this).removeClass('active');
         }
-
     });
 
     if( $('.area.get').length > 0 ){
@@ -42,18 +40,16 @@ $(function(){
         jQuery.get(area_route , function(data) {
             jQuery('.zone .content').html(data);
 
-            jQuery('.area .content .component .controls .edit').click(function(e){
-                    e.preventDefault();
+            jQuery('.area .content .component .controls .edit').click(function (e) {
+                e.preventDefault();
 
-                    var component_id = $(this).attr('rel');
-                    jQuery('#component'+component_id + ' .ikp-controls').hide();
-                    jQuery('#component'+component_id + ' .component-content').load('/page/component/'+ component_id +'/edit');
+                var component_id = $(this).attr('rel');
+                jQuery('#component' + component_id + ' .ikp-controls').hide();
+                jQuery('#component' + component_id + ' .component-content').load('/page/component/' + component_id + '/edit');
             });
 
-         });
-
+        });
     }
-
 });
 
 Teresa.area  = {
@@ -63,12 +59,11 @@ Teresa.area  = {
     send : function(){
         Teresa.log('data modify');
 
-        jQuery('.component-form .submit').live('click', function(e){
+        jQuery('.component-form .submit').on('click', function(e){
             e.preventDefault();
             var form_data = jQuery(this).parent('form');
             var form_action = form_data.attr('action');
             var update = form_data.parent().parent().parent();
-
 
             jQuery.ajax({
                 type: 'POST',

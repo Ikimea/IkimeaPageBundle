@@ -35,5 +35,4 @@ class ComponentType extends AbstractType
     {
         return 'component';
     }
-
 }

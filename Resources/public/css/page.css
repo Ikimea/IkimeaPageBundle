@@ -1,41 +1,46 @@
-#toolbar {
+#teresa-toolbar {
     list-style: none outside none;
     margin: 5px 10px;
     padding: 0;
     text-align: left;
     vertical-align: baseline;
-    font: small "Lucida Grande",Verdana,sans-serif;
+    font: small "Lucida Grande", Verdana, sans-serif;
     width: 37px;
     background: url(/bundles/ikimeapage/images/toolbar_fond.png);
-    position:fixed;
+    position: fixed;
     left: 2px;
     top: 70px;
     border-bottom: 1px solid #000;
     z-index: 999;
 }
-#toolbar .toolbar-header a{
+
+#teresa-toolbar .toolbar-header a {
     background: url(/bundles/ikimeapage/images/toolbar_header.png);
     height: 12px;
     display: block;
     text-decoration: none;
 }
-#toolbar .toolbar-menu{
+
+#teresa-toolbar .toolbar-menu {
     /* overflow: hidden; */
     height: 300px;
     line-height: 20px;
     padding: 5px 20px 5px 1px;
 }
-#toolbar .toolbar-menu ul.parent li{
+
+#teresa-toolbar .toolbar-menu ul.parent li {
     padding: 0 16px 0 10px;
     position: relative;
 
 }
-#toolbar .toolbar-menu ul.parent li a{
+
+#teresa-toolbar .toolbar-menu ul.parent li a {
     color: #ffffff;
     font-size: 0.846em;
     text-decoration: none;
 }
-#toolbar .toolbar-menu .box{
+
+#toolbar .toolbar-menu .box {
     border: 1px solid #6c6c6c;
     width: 150px;
     background: #ededed;
@@ -45,40 +50,51 @@
     padding: 5px;
     display: none;
 }
-#toolbar .toolbar-menu .box ul li{
+
+#teresa-toolbar .toolbar-menu .box ul li {
     float: left;
+    padding: 1px;
 }
-#toolbar .toolbar-menu .box ul li a{
+
+#teresa-toolbar .toolbar-menu .box ul li a {
     color: #000;
 }
-#toolbar #toolbar-footer{
+
+#teresa-toolbar #toolbar-footer {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.1, #555555), color-stop(0.1, #555555), color-stop(0.9, #444547), color-stop(1.0, #444547));
     background-color: #555;
     height: 5px;
 }
 
 /****** Area *****/
-.area{
+.area {
     padding: 10px;
     margin: 10px 0;
     position: relative;
 }
 
-.area.droppable-hover{ border: 2px dotted #CCE0F5; cursor: move; }
-.area a.open-config{
+.area.droppable-hover {
+    border: 2px dotted #CCE0F5;
+    cursor: move;
+}
+
+.area a.open-config {
     background: url(/bundles/ikimeapage/images/gear-select.png) no-repeat;
     width: 28px;
     height: 18px;
     display: block;
     float: right;
 }
-.area a.open-config:hover{
+
+.area a.open-config:hover {
     background-position: 0 -18px;
 }
-.area a.open-config.active:hover{
+
+.area a.open-config.active:hover {
     background-position: 0 -18px;
 }
-.area a.open-config.active{
+
+.area a.open-config.active {
     background-color: #FFFFFF;
     border: 1px solid;
     border-bottom: none;
@@ -87,7 +103,8 @@
     position: relative;
     z-index: 1;
 }
-.area .option{
+
+.area .option {
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     border-radius: 4px 0 4px 4px;
@@ -102,15 +119,43 @@
     position: absolute;
     width: 100px;
 }
-.area .option ul li{ text-align: center; }
-.area .option ul li a{ display: block; color: #333333; margin: 0.25em 0; padding: 0.25em 1em 0.25em 0.5em;  text-decoration: none; font-family: "Helvetica Neue",Helvetica, 'HelveticaNeueLTStd77BdCn',Arial,sans-serif; }
-.area .option ul li a:hover{ background-color: #BFDCEE;  }
 
-.area .component.components-text{ margin-top: 25px; }
-.area .component-content{ z-index: 99; }
-.area .component.components-text .controls{ margin-bottom: 10px;  }
-.area .component ul li{ clear: none;  float: left;margin: 0 2px 2px 0; }
-.area .component ul li a, .zone .component .btn, .component-form input.submit, .component-form input.reset{
+.area .option ul li {
+    text-align: center;
+}
+
+.area .option ul li a {
+    display: block;
+    color: #333333;
+    margin: 0.25em 0;
+    padding: 0.25em 1em 0.25em 0.5em;
+    text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, 'HelveticaNeueLTStd77BdCn', Arial, sans-serif;
+}
+
+.area .option ul li a:hover {
+    background-color: #BFDCEE;
+}
+
+.area .component.components-text {
+    margin-top: 25px;
+}
+
+.area .component-content {
+    z-index: 99;
+}
+
+.area .component.components-text .controls {
+    margin-bottom: 10px;
+}
+
+.area .component ul li {
+    clear: none;
+    float: left;
+    margin: 0 2px 2px 0;
+}
+
+.area .component ul li a, .zone .component .btn, .component-form input.submit, .component-form input.reset {
     -moz-border-bottom-colors: none;
     -moz-border-image: none;
     -moz-border-left-colors: none;
@@ -118,7 +163,7 @@
     -moz-border-top-colors: none;
     -moz-transition: all 0.218s ease 0s;
     background-color: #F7F7F7;
-    background-image: -moz-linear-gradient(center bottom , #DDDDDD 0%, #F7F7F7 100%);
+    background-image: -moz-linear-gradient(center bottom, #DDDDDD 0%, #F7F7F7 100%);
     border-color: #D1D1D1 #C5C5C5 #B8B8B8;
     border-left: 1px solid #C5C5C5;
     border-radius: 2px 2px 2px 2px;
@@ -129,10 +174,23 @@
     text-decoration: none;
     text-shadow: 0 1px 1px #FFFFFF;
 }
-.area .component .btn.icon{padding: 4px 4px 0 20px;}
-.area .component ul li a{display: block;}
-.area .component .btn{ /*width: 21px; */ height: 15px; position: relative; padding-top: 10px; }
-.area .component .btn span.icon{
+
+.area .component .btn.icon {
+    padding: 4px 4px 0 20px;
+}
+
+.area .component ul li a {
+    display: block;
+}
+
+.area .component .btn {
+    /*width: 21px; */
+    height: 15px;
+    position: relative;
+    padding-top: 10px;
+}
+
+.area .component .btn span.icon {
     background: url("/bundles/ikimeapage/images/a-icon-sprite.png");
     background-repeat: no-repeat;
     display: block;
@@ -145,11 +203,25 @@
     top: 50%;
     width: 20px;
 }
-.area .component .btn.order span{ background-position: 0 -20px; }
-.area .component .btn.edit span{ background-position: 0 -440px; }
-.area .component .btn.delete span{ background-position: -20px -1440px; }
-.area .component .btn.submit, .area .component .ikp.reset { height: 27px; padding-top: 1px; }
-.component-form{
+
+.area .component .btn.order span {
+    background-position: 0 -20px;
+}
+
+.area .component .btn.edit span {
+    background-position: 0 -440px;
+}
+
+.area .component .btn.delete span {
+    background-position: -20px -1440px;
+}
+
+.area .component .btn.submit, .area .component .ikp.reset {
+    height: 27px;
+    padding-top: 1px;
+}
+
+.component-form {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);

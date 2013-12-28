@@ -1,6 +1,6 @@
 {% block cmstoolbar %}
 {% if is_granted('ROLE_ADMIN') %}
-<div id="toolbar">
+<div id="teresa-toolbar">
     <div class="toolbar-header">
         <a href="#"> &nbsp; </a>
     </div>
@@ -8,14 +8,14 @@
         <ul class="parent">
             <li> 
                 <a href="#"><img src="/bundles/ikimeapage/images/components.png" alt=" " /></a>
-                <div class="box" class="components">
+                <div class="box components">
                     <ul>
-                        <li id="component-text" class="text"><a href="#"><img src="/bundles/ikimeapage/images/components/text/icon.png" alt=" " /> Text</a></li>
+                        <li id="component-text" class="text component"><a href="#"><img src="/bundles/ikimeapage/images/components/text/icon.png" alt=" " /> Text</a></li>
                     </ul>
                     <div class="clear-fix"></div>
                 </div>
             </li>
-            <li>
+            <!--<li>
                 <a href="#"><img src="/bundles/ikimeapage/images/page.png" alt=" " /></a>
                     <div class="box" class="page">
                     <ul>
@@ -24,7 +24,7 @@
                     </ul>
                     <div class="clear-fix"></div>
                 </div>
-            </li>
+            </li>-->
         </ul>
     </div>    
 
