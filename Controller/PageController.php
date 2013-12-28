@@ -21,9 +21,7 @@ use Ikimea\PageBundle\Form\ComponentType;
 
 class PageController extends Controller
 {
-
     public $defaultTemplatePath = 'IkimeaPageBundle:Page:show.html.twig';
-
 
     /**
      * Displays page
@@ -36,8 +34,7 @@ class PageController extends Controller
      */
     public function showAction()
     {
-
-        $slug = Url::format($this->get('request')->getPathInfo());
+        $slug = $this->get('request')->getPathInfo();
 
         $page = $this->getDoctrine()->getRepository('IkimeaPageBundle:Page')->getPageBySlug($slug);
 
@@ -84,7 +81,6 @@ class PageController extends Controller
      */
     protected function addSeoMeta($page)
     {
-
         if($this->container->hasParameter('ikimea_page.seo')){
             $page_seo  = $this->container->getParameter('ikimea_page.seo');
             $this->getSeoPage()->setTitle($page_seo['title_prefix'].$page->getName(). $page_seo['title_suffix']);
@@ -92,7 +88,6 @@ class PageController extends Controller
         } else {
             $this->getSeoPage()->setTitle($page->getName());
         }
-
 
         if ($page->getMetaDescription()) {
             $this->getSeoPage()->addMeta('name', 'description', $page->getMetaDescription());

@@ -24,7 +24,8 @@ abstract class Page implements PageInterface
     protected $id;
     protected $name;
     protected $slug;
-    protected $culture;
+    protected $locale;
+    protected $route;
     protected $metaKeyword;
     protected $metaDescription;
     protected $created;
@@ -77,17 +78,17 @@ abstract class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getCulture()
+    public function getLocale()
     {
-        return $this->culture;
+        return $this->locale;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setCulture($culture)
+    public function setLocale($locale)
     {
-        $this->culture = $culture;
+        $this->locale = $locale;
     }
 
 

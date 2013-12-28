@@ -29,6 +29,14 @@ class PageRepository extends EntityRepository
        return $this->findOneBy(array('slug' => $slug));
     }
 
+    /*
+     *  get page by route
+     */
+    public function getPageByRoute($route)
+    {
+        return $this->findOneBy(array('route' => $route));
+    }
+
     public function getArea($slug, $name)
     {
         return $this->createQueryBuilder('p')
