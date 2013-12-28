@@ -9,7 +9,6 @@
 * file that was distributed with this source code.
 */
 
-
 namespace Ikimea\PageBundle\Model;
 
 /**
@@ -18,9 +17,7 @@ namespace Ikimea\PageBundle\Model;
 
 class Area implements AreaInterface
 {
-
     protected $id;
-    protected $page_id;
     protected $components;
     protected $name;
     protected $culture;
@@ -29,56 +26,64 @@ class Area implements AreaInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(){
+    public function getId()
+    {
        return $this->id;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCulture(){
+    public function getCulture()
+    {
         return $this->culture;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setCulture($culture){
+    public function setCulture($culture)
+    {
         $this->culture = $culture;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setPage($page ){
+    public function setPage($page)
+    {
         $this->page = $page;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getComponents(){
+    public function getComponents()
+    {
         return $this->components;
     }
 
     /**
-        * {@inheritdoc}
-    */
-    public function setComponents($components){
+     * {@inheritdoc}
+     */
+    public function setComponents($components)
+    {
         $this->components = $components;
     }
 

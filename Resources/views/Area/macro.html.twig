@@ -1,0 +1,3 @@
+{% macro get(name) %}
+    {{ render(controller('IkimeaPageBundle:Area:get', { 'name': name, 'currentRoute' : app.request.attributes.get('_route') })) }}
+{% endmacro %}

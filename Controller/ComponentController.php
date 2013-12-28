@@ -12,6 +12,7 @@
 namespace Ikimea\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -28,7 +29,6 @@ class ComponentController extends Controller
      */
     public function newAction($area)
     {
-
         $em = $this->getDoctrine()->getManager();
         $area =  $entity = $em->getRepository('IkimeaPageBundle:Area')->find($area);
 
@@ -41,14 +41,10 @@ class ComponentController extends Controller
         $entity->setValue('Nouveau widget Texte');
         $entity->setType('richtext');
 
-
         $em->persist($entity);
         $em->flush();
 
-
         $response = $this->forward('IkimeaPageBundle:Component:show', array('id' => $entity->getId()));
-
-
         return $response;
     }
 
@@ -58,10 +54,7 @@ class ComponentController extends Controller
      */
     public function showAction($id)
     {
-
-        $em = $this->getDoctrine()->getManager();
-        $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);
-
+        $component = $this->getComponent($id);
         return $this->render('IkimeaPageBundle:Components:' . $component->getType() . '.html.twig', array('component' => $component));
     }
 
@@ -72,14 +65,7 @@ class ComponentController extends Controller
      */
     public function editAction($id)
     {
-
-        $em = $this->getDoctrine()->getManager();
-        $component = $em->getRepository('IkimeaPageBundle:Component')->find($id);
-
-
-        if (!$component) {
-            throw $this->createNotFoundException('Unable to find Component entity.');
-        }
+        $component = $this->getComponent($id);
 
         $editForm = $this->createForm(new ComponentType(), $component);
 
@@ -87,7 +73,6 @@ class ComponentController extends Controller
             'component' => $component,
             'edit_form' => $editForm->createView()
         ));
-
     }
 
     /**
@@ -95,28 +80,34 @@ class ComponentController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function updateAction($id)
+    public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $request = $this->getRequest();
-        $entity = $em->getRepository('IkimeaPageBundle:Component')->find($id);
+        $component = $this->getComponent($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Component entity.');
-        }
-
-        $editForm = $this->createForm(new ComponentType(), $entity);
-        $editForm->bind($request);
+        $editForm = $this->createForm(new ComponentType(), $component);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
-            $em->persist($entity);
+            $em->persist($component);
             $em->flush();
 
-            $response =  new Response( $entity->getValue(), 200 );
+            $response =  new Response( $component->getValue(), 200 );
         } else {
-            $response = $this->forward('IkimeaPageBundle:Component:show', array('id' => $entity->getId()));
+            $response = $this->forward('IkimeaPageBundle:Component:show', array('id' => $component->getId()));
         }
 
         return $response;
+    }
+
+    public function getComponent($id)
+    {
+        $component = $this->getDoctrine()->getManager()->getRepository('IkimeaPageBundle:Component')->find($id);
+
+        if (!$component) {
+            throw createNotFoundException(sprintf('The Component "%s" was not found.', $id ));
+        }
+
+        return $component;
     }
 }

@@ -14,6 +14,7 @@
 
         <field name="name" column="name" type="string" length="255" nullable="false"  />
         <field name="slug" type="string" length="156"   unique="true" />
+        <field name="culture" column="culture" type="string" length="255"  nullable="false"  />
         <field name="template" type="string" length="string"  />
         <field name="metaKeyword"       type="string"   column="meta_keyword"       nullable="true" length="255"/>
         <field name="metaDescription"   type="string"   column="meta_description"   nullable="true" length="255"/>

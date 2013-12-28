@@ -9,7 +9,6 @@
 * file that was distributed with this source code.
 */
 
-
 namespace Ikimea\PageBundle\Model;
 
 /**
@@ -33,17 +32,17 @@ interface PageInterface
      * @return string
      */
     public function getSlug();
-    
+
     /**
      * @return string
      */
     public function getTemplate();
-    
+
     /**
      * @return string
      */
     public function getMetaKeyword();
-    
+
     /**
      * @return string
      */
@@ -73,29 +72,45 @@ interface PageInterface
      * @param string $slug
      */
     public function setSlug($slug);
-    
+
+    /**
+     * Get local
+     *
+     * @return string $culture
+     */
+    public function getCulture();
+
+    /**
+     * Get local
+     *
+     * @param string $culture
+     */
+    public function setCulture($culture);
+
     /**
      * @param string $template
      */
-    public function setTemplate($slug);
-    
+    public function setTemplate($template);
+
      /**
      * @param string $metaKeyword
      */
     public function setMetaKeyword($metaKeyword);
-    
+
     /**
      * @param string $metaDescription
      */
     public function setMetaDescription($metaDescription);
 
     /**
-     * @param datetime $created
+     * @param \DateTime $created
+     *
      */
-    public function setCreated(\DateTime $updated);
+    public function setCreated(\DateTime $created);
 
     /**
-     * @param datetime $updated
+     * @param \DateTime $updated
+     *
      */
     public function setUpdated(\DateTime $updated);
 

@@ -9,11 +9,9 @@
 * file that was distributed with this source code.
 */
 
-
 namespace Ikimea\PageBundle\Model;
 
 use DateTime;
-use InvalidArgumentException;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -26,6 +24,7 @@ abstract class Page implements PageInterface
     protected $id;
     protected $name;
     protected $slug;
+    protected $culture;
     protected $metaKeyword;
     protected $metaDescription;
     protected $created;
@@ -78,6 +77,23 @@ abstract class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
+    public function getCulture()
+    {
+        return $this->culture;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCulture($culture)
+    {
+        $this->culture = $culture;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
     public function setTemplate($template)
     {
         $this->template = $template;
@@ -115,7 +131,6 @@ abstract class Page implements PageInterface
         return $this->metaDescription;
     }
 
-
     /**
      * {@inheritdoc}
      */
@@ -123,7 +138,6 @@ abstract class Page implements PageInterface
     {
         $this->metaDescription = $metaDescription;
     }
-
 
     /**
      * {@inheritdoc}
@@ -194,7 +208,7 @@ abstract class Page implements PageInterface
      */
     public function setAreas($areas)
     {
-        $this->areas= $areas;
+        $this->areas = $areas;
     }
 
     /**
@@ -204,5 +218,4 @@ abstract class Page implements PageInterface
     {
         return $this->areas;
     }
-
 }

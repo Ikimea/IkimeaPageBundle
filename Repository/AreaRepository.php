@@ -27,7 +27,7 @@ class AreaRepository extends EntityRepository
      * @param $slug
      * @return \Doctrine\ORM\Query
      */
-    public function getAreaBaseQuery($name, $parent, $culture)
+    public function getAreaBaseQuery($name, $parent)
     {
          $results =  $this->createQueryBuilder('z')
             ->select('z, c')
@@ -35,9 +35,7 @@ class AreaRepository extends EntityRepository
             ->leftJoin('z.page', 'p')
             ->where('z.name = :name')
             ->Andwhere('p.id = :slug')
-            ->Andwhere('z.culture = :culture')
             ->setParameter('name',$name)
-            ->setParameter('culture',$culture)
             ->setParameter('slug',$parent)
             ->setMaxResults(1)
             ->getQuery();
@@ -50,13 +48,13 @@ class AreaRepository extends EntityRepository
      * @param $culture
      * @param $slug
      */
-    public function areaExist($name, $culture, $slug)
+    public function areaExist($name, $slug)
     {
-        return (count($this->getAreaBaseQuery($name, $culture, $slug)) == 0) ? false: true;
+        return (count($this->getAreaBaseQuery($name, $slug)) == 0) ? false: true;
     }
 
-    public function getArea($name, $culture, $slug)
+    public function getArea($name, $slug)
     {
-       return $this->getAreaBaseQuery($name, $culture, $slug);
+       return $this->getAreaBaseQuery($name, $slug);
     }
 }

@@ -13,7 +13,7 @@
 namespace Ikimea\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Bundle\FrameworkBundle\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 use Ikimea\PageBundle\Exception\InternalErrorException;
 use Ikimea\PageBundle\Entity\Area;
@@ -21,20 +21,26 @@ use Ikimea\PageBundle\Entity\Area;
 class AreaController extends Controller
 {
 
-    public function getAction($name )
+    public function getAction(Request $request, $name, $currentRoute)
     {
-        $em = $this->getDoctrine();
-        $culture = $this->get('request')->getLocale();
+        $em = $this->getDoctrine()->getManager();
+        $culture = $request->getLocale();
+
+        if($currentRoute === null ) {
+            $pathInfo =  $request->getPathInfo();
+        } else {
+            $pathInfo = $this->get('router')->generate($currentRoute);
+        }
 
         if(strpos($name, ' ', 1) !== false) {
             throw new InternalErrorException('The block name must not contain spaces');
         }
 
-        $slug =  ltrim($this->getRequest()->getPathInfo(), '/'.$this->getRequest()->getLocale().'/');
-
+        $slug =  ltrim($pathInfo, '/'.$culture.'/');
 
         $page =  $em->getRepository('IkimeaPageBundle:Page')->getPageBySlug($slug);
-        $getArea =  $em->getRepository('IkimeaPageBundle:Area')->areaExist($name, $page->getId(), $culture );
+
+        $getArea =  $em->getRepository('IkimeaPageBundle:Area')->areaExist($name, $page->getId() );
 
         if (false === $getArea) {
 
@@ -43,11 +49,10 @@ class AreaController extends Controller
             $area->setCulture($culture);
             $area->setName($name);
 
-
             $em->persist($area);
             $em->flush();
-        } else {
 
+        } else {
             $area = $em->getRepository('IkimeaPageBundle:Area')->getArea($name, $page->getId(), $culture);
         }
 
