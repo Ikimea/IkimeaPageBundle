@@ -17,7 +17,6 @@ namespace Ikimea\PageBundle\Model;
 
 interface PageInterface
 {
-
     /**
      * @return integer $id
      */
@@ -49,6 +48,20 @@ interface PageInterface
     public function getMetaDescription();
 
     /**
+     * Get enabled
+     *
+     * @return boolean $published
+     */
+    public function isPublished();
+
+    /**
+     * Set Published
+     *
+     * @param boolean $published
+     */
+    public function setPublished($published);
+
+    /**
      * @return datetime
      */
     public function getCreated();
@@ -57,6 +70,22 @@ interface PageInterface
      * @return datetime
      */
     public function getUpdated();
+
+    /**
+     * Set parent
+     *
+     * @param PageInterface $parent
+     */
+    public function setParent(PageInterface $parent = null);
+
+    /**
+     * Get parent
+     *
+     * @param integer $level default -1
+     *
+     * @return PageInterface $parent
+     */
+    public function getParent($level = -1);
 
     /**
      * @return \Doctrine\Common\Collections\Collection
@@ -118,5 +147,4 @@ interface PageInterface
      * set areas
     */
     public function setAreas($areas);
-
 }

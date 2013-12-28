@@ -19,7 +19,7 @@
         <field name="template" type="string" length="string"  />
         <field name="metaKeyword"       type="string"   column="meta_keyword"       nullable="true" length="255"/>
         <field name="metaDescription"   type="string"   column="meta_description"   nullable="true" length="255"/>
-        <field name="isPublished"      type="integer"   column="is_published"   nullable="true"  />
+        <field name="published"      type="integer"   column="published"   nullable="true"  />
         <field name="created" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>
@@ -27,6 +27,7 @@
             <gedmo:timestampable on="update"/>
         </field>
 
+        <many-to-one field="parent" target-entity="Page" inversed-by="children" orphan-removal="true" />
         <one-to-many field="areas" target-entity="Area" mapped-by="page" />
 
     </entity>

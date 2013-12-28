@@ -9,17 +9,14 @@
 * file that was distributed with this source code.
 */
 
-
 namespace Ikimea\PageBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Ikimea\PageBundle\Model\Page as BasePage;
 
 class Page extends BasePage
 {
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      */

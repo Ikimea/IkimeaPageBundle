@@ -26,11 +26,12 @@ abstract class Page implements PageInterface
     protected $slug;
     protected $locale;
     protected $route;
+    protected $parent;
     protected $metaKeyword;
     protected $metaDescription;
     protected $created;
     protected $updated;
-    protected $isPublished;
+    protected $published;
     protected $template;
     protected $credentials;
     protected $areas;
@@ -90,7 +91,6 @@ abstract class Page implements PageInterface
     {
         $this->locale = $locale;
     }
-
 
     /**
      * {@inheritdoc}
@@ -159,17 +159,17 @@ abstract class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setIsPublished($isPublished)
+    public function setPublished($published)
     {
-        $this->is_published = $isPublished;
+        $this->published = $published;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getIsPublished()
+    public function isPublished()
     {
-        return $this->is_published;
+        return $this->published;
     }
 
     /**
@@ -202,6 +202,32 @@ abstract class Page implements PageInterface
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setParent(PageInterface $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent($level = -1)
+    {
+        if (-1 === $level) {
+            return $this->parent;
+        }
+
+        $parents = $this->getParents();
+
+        if ($level < 0) {
+            $level = count($parents) + $level;
+        }
+
+        return isset($parents[$level]) ? $parents[$level] : null;
     }
 
     /**
