@@ -76,16 +76,16 @@ interface PageInterface
     /**
      * Get local
      *
-     * @return string $culture
+     * @return string $locale
      */
-    public function getCulture();
+    public function getLocale();
 
     /**
      * Get local
      *
      * @param string $culture
      */
-    public function setCulture($culture);
+    public function setLocale($culture);
 
     /**
      * @param string $template

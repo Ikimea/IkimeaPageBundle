@@ -17,11 +17,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Ikimea\PageBundle\Entity\Component;
-use Ikimea\PageBundle\Form\ComponentType;
+use Ikimea\PageBundle\Form\Type\ComponentType;
 
 class ComponentController extends Controller
 {
-
     /**
      * @param $area id the area
      * @return \Symfony\Component\HttpFoundation\Response

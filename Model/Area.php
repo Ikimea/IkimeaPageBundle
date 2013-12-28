@@ -50,22 +50,6 @@ class Area implements AreaInterface
     /**
      * {@inheritdoc}
      */
-    public function getCulture()
-    {
-        return $this->culture;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCulture($culture)
-    {
-        $this->culture = $culture;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setPage($page)
     {
         $this->page = $page;

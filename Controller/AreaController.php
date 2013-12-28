@@ -20,25 +20,22 @@ use Ikimea\PageBundle\Entity\Area;
 
 class AreaController extends Controller
 {
-
-    public function getAction(Request $request, $name, $currentRoute)
+    public function getAction(Request $request, $name, $currentRoute = null)
     {
         $em = $this->getDoctrine()->getManager();
         $culture = $request->getLocale();
-
-        if($currentRoute === null ) {
-            $pathInfo =  $request->getPathInfo();
-        } else {
-            $pathInfo = $this->get('router')->generate($currentRoute);
-        }
 
         if(strpos($name, ' ', 1) !== false) {
             throw new InternalErrorException('The block name must not contain spaces');
         }
 
-        $slug =  ltrim($pathInfo, '/'.$culture.'/');
-
-        $page =  $em->getRepository('IkimeaPageBundle:Page')->getPageBySlug($slug);
+        if($currentRoute === null ) {
+            $pathInfo =  $request->getPathInfo();
+            $slug =  ltrim($pathInfo, '/'.$culture.'/');
+            $page =  $em->getRepository('IkimeaPageBundle:Page')->getPageBySlug($slug);
+        } else {
+            $page =  $em->getRepository('IkimeaPageBundle:Page')->getPageByRoute($currentRoute);
+        }
 
         $getArea =  $em->getRepository('IkimeaPageBundle:Area')->areaExist($name, $page->getId() );
 
@@ -46,7 +43,6 @@ class AreaController extends Controller
 
             $area =  new Area();
             $area->setPage($page);
-            $area->setCulture($culture);
             $area->setName($name);
 
             $em->persist($area);
