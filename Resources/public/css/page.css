@@ -216,9 +216,10 @@
     background-position: -20px -1440px;
 }
 
-.area .component .btn.submit, .area .component .ikp.reset {
+.area .component .btn.submit, .area .component .btn.reset {
     height: 27px;
     padding-top: 1px;
+    margin-top: 12px;
 }
 
 .component-form {
