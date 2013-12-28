@@ -3,15 +3,20 @@ parameters:
 
 services:
     ikimea_page.menu_builder:
-      class: %ikimea_page.menu_builder.class%
-      arguments: ["@knp_menu.factory"]
+        class: %ikimea_page.menu_builder.class%
+        arguments: ["@knp_menu.factory"]
 
     ikimea_page.breadcrumb:
-      class: Knp\Menu\MenuItem # the service definition requires setting the class
-      factory_service: ikimea_page.menu_builder
-      factory_method: breadcrumb
-      arguments: ["@request"]
-      scope: request # needed as we have the request as a dependency here
-      tags:
-        - { name: knp_menu.menu, alias: breadcrumb }
-      
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: ikimea_page.menu_builder
+        factory_method: breadcrumb
+        arguments: ["@request"]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: breadcrumb }
+
+    ikimea_page.annotation_listener:
+        class: Ikimea\PageBundle\EventListener\ControllerAnnotationListener
+        arguments: ["@service_container"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
