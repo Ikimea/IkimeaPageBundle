@@ -48,7 +48,7 @@ class ControllerAnnotationListener
                 /** @var PageEntity $page */
                 $page = $this->em->getRepository('IkimeaPageBundle:Page')->getPageByRoute($route);
 
-                if (!$page || !$page->getIsPublished()) {
+                if (!$page || !$page->isPublished()) {
                     throw new NotFoundHttpException('Page not found');
                 }
             }
