@@ -8,16 +8,13 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
+
 namespace Ikimea\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-
-use Ikimea\PageBundle\Util\Url;
-use Ikimea\PageBundle\Entity\Component;
-use Ikimea\PageBundle\Form\ComponentType;
 
 class PageController extends Controller
 {
@@ -67,11 +64,11 @@ class PageController extends Controller
      */
     public function editAction($slug)
     {
-
+        return new Response();
     }
 
 
-    public function getSeoPage()
+    protected function getSeoPage()
     {
         return $this->get('sonata.seo.page');
     }

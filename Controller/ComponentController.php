@@ -99,7 +99,7 @@ class ComponentController extends Controller
         return $response;
     }
 
-    public function getComponent($id)
+    protected function getComponent($id)
     {
         $component = $this->getDoctrine()->getManager()->getRepository('IkimeaPageBundle:Component')->find($id);
 
